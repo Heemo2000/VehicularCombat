@@ -1,0 +1,16 @@
+{
+    "name": "Game.SoundManagement",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e770d305856c4a648bd86268a564c537"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
