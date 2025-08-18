@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+#if UNITY_EDITOR
 using UnityEditor.UIElements;
+#endif
 using UnityEngine.UIElements;
 using Game.BaseUI;
 
@@ -27,6 +29,12 @@ namespace Game.Editor
             var exitModeProp = serializedObject.FindProperty("exitMode");
             var exitDirectionProp = serializedObject.FindProperty("exitDirection");
 
+            var onPushActionProp = serializedObject.FindProperty("OnPushAction");
+            var onPostPushActionProp = serializedObject.FindProperty("OnPostPushAction");
+            var onPrePopActionProp = serializedObject.FindProperty("OnPrePopAction");
+            var onPostPopActionProp = serializedObject.FindProperty("OnPostPopAction");
+
+
             var entryModeEnumValues = System.Enum.GetValues(typeof(EntryMode));
             var directionEnumValues = System.Enum.GetValues(typeof(Direction));
 
@@ -41,6 +49,11 @@ namespace Game.Editor
             var exitModePopupField = new PopupField<string>("Exit Mode", entryModeDisplayOptions, exitModeProp.enumValueIndex);
             var exitDirectionPopupField = new PopupField<string>("Exit Direction", directionDisplayOptions, exitDirectionProp.enumValueIndex);
 
+            var onPushActionField = new PropertyField(onPushActionProp);
+            var onPostPushActionField = new PropertyField(onPostPushActionProp);
+            var onPrePopActionField = new PropertyField(onPrePopActionProp);
+            var onPostPopActionField = new PropertyField(onPostPopActionProp);
+
             entryModePopupField.index = FindEntryModeIndex(entryModeProp.intValue);
             entryDirectionPopupField.index = FindDirectionIndex(entryDirectionProp.intValue);
             exitModePopupField.index = FindEntryModeIndex(exitModeProp.intValue);
@@ -50,6 +63,14 @@ namespace Game.Editor
             root.Add(entryDirectionPopupField);
             root.Add(exitModePopupField);
             root.Add(exitDirectionPopupField);
+
+
+            
+            
+            root.Add(onPushActionField);
+            root.Add(onPostPushActionField);
+            root.Add(onPrePopActionField);
+            root.Add(onPostPopActionField);
 
             HandlePopupFieldEnabled((EntryMode)entryModeProp.intValue, entryDirectionPopupField);
             HandlePopupFieldEnabled((EntryMode)exitModeProp.intValue, exitDirectionPopupField);
@@ -93,6 +114,7 @@ namespace Game.Editor
                 HandlePopupFieldEnabled(exitMode, exitDirectionPopupField);
                 exitModeProp.serializedObject.ApplyModifiedProperties();
             });
+            
             
             return root;
         }

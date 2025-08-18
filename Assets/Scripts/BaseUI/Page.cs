@@ -16,9 +16,14 @@ namespace Game.BaseUI
         private EntryMode exitMode = EntryMode.Slide;
         [SerializeField]
         private Direction exitDirection = Direction.Left;
+
+        [SerializeField]
         public UnityEvent OnPushAction;
+        [SerializeField]
         public UnityEvent OnPostPushAction;
+        [SerializeField] 
         public UnityEvent OnPrePopAction;
+        [SerializeField] 
         public UnityEvent OnPostPopAction;
 
         private RectTransform _rectTransform;
