@@ -10,7 +10,15 @@ namespace Game.StateMachineHandling
         private Dictionary<Type, StateNode> nodes = new();
         private HashSet<ITransition> anyTransitions = new();
 
+        public string GetCurrentStateName()
+        {
+            if(current == null)
+            {
+                return "No State";
+            }
 
+            return current.State.GetType().Name;
+        }
         public void OnUpdate()
         {
             ITransition transition = GetTransition();

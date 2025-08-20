@@ -25,11 +25,12 @@ namespace Game.Gameplay
         private float currentSpeed = 0.0f;
         private float targetSpeed = 0.0f;
         private float currentRotationSpeed = 0.0f;
-
+        private Vector2 moveInput = Vector2.zero;
         private Rigidbody vehicleRB;
         public void HandleMovement(Vector2 moveInput)
         {
             isMoving = moveInput.y != 0.0f;
+            this.moveInput = moveInput;
             targetSpeed = (isMoving) ? movingSpeed : 0.0f;
             currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, moveTransitioningSpeed * Time.fixedDeltaTime);
 
