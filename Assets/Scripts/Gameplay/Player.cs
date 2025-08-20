@@ -23,7 +23,7 @@ namespace Game.Gameplay
         {
             if (vehicle != null) 
             {
-                vehicle.HandleMovement(moveInput);
+                vehicle.Input = moveInput;
             }
         }
     }

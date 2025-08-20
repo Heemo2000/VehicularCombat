@@ -41,7 +41,7 @@ namespace Game.Gameplay
         {
             if(moveDirection == Vector3.zero)
             {
-                vehicle.HandleMovement(Vector2.zero);
+                vehicle.Input = Vector2.zero;
                 return;
             }
             Vector2 moveInput = Vector2.zero;
@@ -57,9 +57,9 @@ namespace Game.Gameplay
                 moveInput.x = Mathf.Sign(angle);
             }
 
-            moveInput.y = 1.0f;
+            moveInput.y = (angle > 180.0f || angle < -180.0f) ? -1.0f : 1.0f; 
 
-            vehicle.HandleMovement(moveInput);
+            vehicle.Input = moveInput;
         }
 
         private void Awake()
