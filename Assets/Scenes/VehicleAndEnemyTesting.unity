@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &45786014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45786015}
+  m_Layer: 3
+  m_Name: Forward Blocking Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &45786015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45786014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.546, z: 2.544}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1982041954}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &97007821
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 110042387}
   - component: {fileID: 110042388}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 283737731}
   - component: {fileID: 283737732}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 755233414}
   - component: {fileID: 755233415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,26 +1429,26 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0.1997534
         value: 1
-        inSlope: 0.8412008
-        outSlope: 0.8412008
+        inSlope: 1.8383322
+        outSlope: 1.8383322
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.35018495
-        value: 0.5
-        inSlope: -1.8927205
-        outSlope: -1.8927205
+        value: 0.8
+        inSlope: -0.66475415
+        outSlope: -0.66475415
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.2
-        inSlope: -0.46166983
-        outSlope: -0.46166983
+        value: 0.8
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -1447,26 +1478,26 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0.1997534
         value: 1
-        inSlope: 0.8412008
-        outSlope: 0.8412008
+        inSlope: 1.8383322
+        outSlope: 1.8383322
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.35018495
-        value: 0.5
-        inSlope: -1.8927205
-        outSlope: -1.8927205
+        value: 0.8
+        inSlope: -0.66475415
+        outSlope: -0.66475415
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.2
-        inSlope: -0.46166983
-        outSlope: -0.46166983
+        value: 0.8
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -1486,39 +1517,21 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: 5.0061727
-        outSlope: 5.0061727
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.1997534
-        value: 1
-        inSlope: 0.8412008
-        outSlope: 0.8412008
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.35018495
-        value: 0.5
-        inSlope: -1.8927205
-        outSlope: -1.8927205
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.2
-        inSlope: -0.46166983
-        outSlope: -0.46166983
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -1535,39 +1548,21 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: 5.0061727
-        outSlope: 5.0061727
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.1997534
-        value: 1
-        inSlope: 0.8412008
-        outSlope: 0.8412008
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.35018495
-        value: 0.5
-        inSlope: -1.8927205
-        outSlope: -1.8927205
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.2
-        inSlope: -0.46166983
-        outSlope: -0.46166983
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -1586,7 +1581,7 @@ MonoBehaviour:
   interpolatedInput: 1
   steeringInputTime: 1
   accelerateInputTime: 1
-  gravity: 50
+  gravity: 15
   maxFakeWheelSpeed: 50
   fakeSpeedCurve:
     serializedVersion: 2
@@ -1630,15 +1625,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxTorque: 5000
+  forwardTorque: 10000
   powerCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.4
-      inSlope: 3.0037036
-      outSlope: 3.0037036
+      value: 0.2
+      inSlope: 4.004938
+      outSlope: 4.004938
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -1646,8 +1641,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.1997534
       value: 1
-      inSlope: -0.1600337
-      outSlope: -0.1600337
+      inSlope: 0.34058356
+      outSlope: 0.34058356
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -1675,6 +1670,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   forwardSpeed: 50
   reverseSpeed: 60
+  brakingTorque: 2000
   turnRadius: 3
   antiRollbarEnabled: 0
   stiffness: 100
@@ -1971,6 +1967,37 @@ Transform:
   - {fileID: 1929704481}
   m_Father: {fileID: 729352234}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1759221105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1759221106}
+  m_Layer: 3
+  m_Name: Backward Blocking Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1759221106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759221105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.546, z: -2.544}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1982041954}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1795064866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,7 +2093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867025899}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2423,13 +2450,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1159621998}
   ignoreRotationAngle: 90
-  minPatrolTime: 2
-  maxPatrolTime: 4
-  minPatrolRadius: 18
-  maxPatrolRadius: 32
-  chaseRadius: 15
-  attackRadius: 10
+  minPatrolTime: 1
+  maxPatrolTime: 2.5
+  minPatrolRadius: 44
+  maxPatrolRadius: 64
+  chaseRadius: 40
+  attackRadius: 20
   checkTarget: {fileID: 1373847487}
+  forwardBlockingTransform: {fileID: 45786015}
+  forwardBlockingDistance: 2
+  backwardBlockingTransform: {fileID: 1759221106}
+  backwardBlockingDistance: 2
+  blockingLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &1982041951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2648,10 +2682,10 @@ MonoBehaviour:
     m_Bits: 1
   springStrength: 10000
   damperStrength: 2000
-  interpolatedInput: 1
+  interpolatedInput: 0
   steeringInputTime: 1
   accelerateInputTime: 1
-  gravity: 50
+  gravity: 15
   maxFakeWheelSpeed: 50
   fakeSpeedCurve:
     serializedVersion: 2
@@ -2695,7 +2729,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxTorque: 5000
+  forwardTorque: 10000
   powerCurve:
     serializedVersion: 2
     m_Curve:
@@ -2740,6 +2774,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   forwardSpeed: 50
   reverseSpeed: 60
+  brakingTorque: 2000
   turnRadius: 3
   antiRollbarEnabled: 0
   stiffness: 100
@@ -2810,6 +2845,8 @@ Transform:
   - {fileID: 848890237}
   - {fileID: 1147562673}
   - {fileID: 1373847487}
+  - {fileID: 45786015}
+  - {fileID: 1759221106}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2032132581
@@ -3203,7 +3240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2142069104}
   - component: {fileID: 2142069105}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
