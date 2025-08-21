@@ -1,10 +1,14 @@
 using UnityEngine;
 using Game.StateMachineHandling;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Game.Gameplay
 {
     public class BasicEnemy : MonoBehaviour
     {
+        [Header("AI Settings: ")]
         [SerializeField] private Transform target;
         [Min(15.0f)]
         [SerializeField] private float ignoreRotationAngle = 45.0f;
@@ -21,7 +25,15 @@ namespace Game.Gameplay
         [Min(0.01f)]
         [SerializeField] private float attackRadius = 2.5f;
         [SerializeField] private Transform checkTarget;
+        [Header("Blocking Settings: ")]
 
+        [SerializeField] private Transform forwardBlockingTransform;
+        [Min(0.01f)]
+        [SerializeField] private float forwardBlockingDistance = 2.0f;
+        [SerializeField] private Transform backwardBlockingTransform;
+        [Min(0.01f)]
+        [SerializeField] private float backwardBlockingDistance = 2.0f;
+        [SerializeField] private LayerMask blockingLayerMask;
         public Transform Target { get => target; set => target = value; }
         public float MinPatrolTime { get => minPatrolTime; set => minPatrolTime = value; }
         public float MaxPatrolTime { get => maxPatrolTime; set => maxPatrolTime = value; }
@@ -37,6 +49,16 @@ namespace Game.Gameplay
         private BasicEnemyChaseState chaseState;
         private BasicEnemyAttackState attackState;
 
+        public void ApplyBrakes()
+        {
+            this.vehicle.BrakesApplied = true;
+        }
+
+        public void UnapplyBrakes()
+        {
+            this.vehicle.BrakesApplied = false;
+        }
+
         public void HandleMovement(Vector3 moveDirection)
         {
             if(moveDirection == Vector3.zero)
@@ -46,7 +68,7 @@ namespace Game.Gameplay
             }
             Vector2 moveInput = Vector2.zero;
             float angle = Vector3.SignedAngle(transform.forward, moveDirection, transform.up);
-            Debug.Log("Check angle: " + angle);
+            //Debug.Log("Check angle: " + angle);
 
             if(angle >= -ignoreRotationAngle/2.0f && angle <= ignoreRotationAngle/2.0f)
             {
@@ -54,12 +76,43 @@ namespace Game.Gameplay
             }
             else
             {
-                moveInput.x = Mathf.Sign(angle);
+                float steerInput = Vector3.Dot(moveDirection, transform.right);
+                moveInput.x = steerInput;
             }
 
-            moveInput.y = (angle > 180.0f || angle < -180.0f) ? -1.0f : 1.0f; 
+            moveInput.y = Vector3.Dot(transform.forward, moveDirection);
 
+            if (IsBlockingForward())
+            {
+                moveInput.y = -1.0f;
+            }
+            else if (IsBlockingBackward())
+            {
+                moveInput.y = 1.0f;
+            }
+            
             vehicle.Input = moveInput;
+        }
+
+        public void ApplyInstantBrakes()
+        {
+            vehicle.ApplyInstantBrakes();
+        }
+
+        private bool IsBlockingForward()
+        {
+            return Physics.Raycast(forwardBlockingTransform.position, 
+                                   forwardBlockingTransform.forward, 
+                                   forwardBlockingDistance, 
+                                   blockingLayerMask.value);
+        }
+
+        private bool IsBlockingBackward()
+        {
+            return Physics.Raycast(backwardBlockingTransform.position,
+                                   backwardBlockingTransform.forward,
+                                   backwardBlockingDistance,
+                                   blockingLayerMask.value);
         }
 
         private void Awake()
@@ -123,28 +176,47 @@ namespace Game.Gameplay
 
         private void OnDrawGizmosSelected()
         {
+            if(forwardBlockingTransform != null)
+            {
+                Gizmos.color = Color.gray;
+                Gizmos.DrawLine(forwardBlockingTransform.position,
+                                forwardBlockingTransform.position +
+                                forwardBlockingTransform.forward * forwardBlockingDistance);
+            }
+
+            if (backwardBlockingTransform != null)
+            {
+                Gizmos.color = Color.gray;
+                Gizmos.DrawLine(backwardBlockingTransform.position,
+                                backwardBlockingTransform.position +
+                                backwardBlockingTransform.forward * backwardBlockingDistance);
+            }
             if(checkTarget == null)
             {
                 return;
             }
 
+            #if UNITY_EDITOR
             //Draw gizmos for patrol radius
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(checkTarget.position, minPatrolRadius);
-            Gizmos.DrawWireSphere(checkTarget.position, maxPatrolRadius);
+            Handles.color = Color.yellow;
+            Handles.DrawWireDisc(checkTarget.position, transform.up, minPatrolRadius);
+            Handles.DrawWireDisc(checkTarget.position, transform.up, maxPatrolRadius);
 
             //Draw gizmos for chase radius
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(checkTarget.position, chaseRadius);
+            Handles.color = Color.magenta;
+            Handles.DrawWireDisc(checkTarget.position, transform.up, chaseRadius);
 
             //Draw gizmos for attack radius
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(checkTarget.position, attackRadius);
+            Handles.color = Color.red;
+            Handles.DrawWireDisc(checkTarget.position, transform.up, attackRadius);
+
+            #endif
 
             //Draw gizmos for look range
             Vector3 leftDirection = Quaternion.AngleAxis(-ignoreRotationAngle/2.0f, transform.up) * transform.forward;
             Vector3 rightDirection = Quaternion.AngleAxis(ignoreRotationAngle / 2.0f, transform.up) * transform.forward;
 
+            
             Gizmos.color = Color.black;
             Gizmos.DrawLine(checkTarget.position, checkTarget.position + leftDirection * 5.0f);
             Gizmos.DrawLine(checkTarget.position, checkTarget.position + rightDirection * 5.0f);

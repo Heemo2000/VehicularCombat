@@ -14,7 +14,7 @@ namespace Game.Gameplay
 
         public void OnEnter()
         {
-
+            this.enemy.ApplyBrakes();
         }
 
 
@@ -35,7 +35,7 @@ namespace Game.Gameplay
 
         public void OnExit()
         {
-
+            this.enemy.UnapplyBrakes();
         }
     }
 }

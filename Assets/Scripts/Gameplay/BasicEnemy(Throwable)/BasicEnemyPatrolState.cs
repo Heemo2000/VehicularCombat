@@ -66,8 +66,8 @@ namespace Game.Gameplay
                 Debug.Log("Waiting for " + randomTime + " seconds");
                 while (currentTime < randomTime)
                 {
-                    
-                    this.enemy.HandleMovement(Vector3.zero);
+
+                    this.enemy.ApplyBrakes();
                     currentTime += Time.fixedDeltaTime;
                     yield return null;
                 }
@@ -80,7 +80,6 @@ namespace Game.Gameplay
 
                 while (!NavMesh.SamplePosition(randomPatrolPosition, out hit, 1.0f, NavMesh.AllAreas))
                 {
-                    this.enemy.HandleMovement(Vector3.zero);
                     random2D = Random.insideUnitCircle;
                     randomPatrolPosition = this.enemy.CheckTarget.position +
                                                new Vector3(random2D.x, 0.0f, random2D.y) *
@@ -99,6 +98,8 @@ namespace Game.Gameplay
                 }
 
                 int pathIndex = 0;
+
+                this.enemy.UnapplyBrakes();
 
                 Debug.Log("Now moving on a path");
                 while(pathIndex < this.path.corners.Length)
