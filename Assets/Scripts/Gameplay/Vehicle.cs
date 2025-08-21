@@ -220,7 +220,7 @@ namespace Game.Gameplay
 
             float normalizedSpeed = GetNormalizedSpeed();
 
-            Debug.Log("Normalized speed: " + normalizedSpeed);
+            //Debug.Log("Normalized speed: " + normalizedSpeed);
 
             float availaibleTorque = (currentInput.y != 0.0f) ? powerCurve.Evaluate(normalizedSpeed) * forwardTorque * currentInput.y : 0.0f;
             //Debug.Log("Availaible torque: " + availaibleTorque);
