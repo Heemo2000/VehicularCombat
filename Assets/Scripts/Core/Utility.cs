@@ -1,6 +1,8 @@
 
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Core
 {
@@ -49,7 +51,28 @@ namespace Game.Core
             return (T)values.GetValue(UnityEngine.Random.Range(minInclusive, maxExclusive));
         }
 
+        public static void DrawPath(NavMeshPath path, Color color)
+        {
+            if (path == null || path.corners.Length == 0)
+            {
+                return;
+            }
 
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                Vector3 current = path.corners[i];
+                Vector3 next = path.corners[i + 1];
+                Debug.DrawLine(current, next, color, 0.1f);
+            }
+
+            if (path.corners.Length > 1)
+            {
+                Debug.DrawLine(path.corners[path.corners.Length - 2], 
+                               path.corners[path.corners.Length - 1], 
+                               color, 
+                               0.1f);
+            }
+        }
     }
 
 }

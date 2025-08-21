@@ -14,14 +14,14 @@ namespace Game.Gameplay
 
         public void OnEnter()
         {
-
+            this.enemy.UnapplyBrakes();
+            this.enemy.SetSpeed(this.enemy.ChaseSpeed);
         }
 
 
         public void OnUpdate()
         {
-            Vector3 moveDirection = (this.enemy.Target.position - this.enemy.transform.position).normalized;
-            this.enemy.HandleMovement(moveDirection);
+            this.enemy.HandleMovement(this.enemy.Target.position);
         }
 
         public void OnFixedUpdate()

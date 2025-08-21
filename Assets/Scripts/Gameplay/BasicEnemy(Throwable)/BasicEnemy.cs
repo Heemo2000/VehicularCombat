@@ -10,8 +10,6 @@ namespace Game.Gameplay
     {
         [Header("AI Settings: ")]
         [SerializeField] private Transform target;
-        [Min(15.0f)]
-        [SerializeField] private float ignoreRotationAngle = 45.0f;
         [Min(0.01f)]
         [SerializeField] private float minPatrolTime = 2.0f;
         [Min(0.01f)]
@@ -25,6 +23,9 @@ namespace Game.Gameplay
         [Min(0.01f)]
         [SerializeField] private float attackRadius = 2.5f;
         [SerializeField] private Transform checkTarget;
+        [SerializeField] private float patrolSpeed = 10.0f;
+        [SerializeField] private float chaseSpeed = 20.0f;
+        
         [Header("Blocking Settings: ")]
 
         [SerializeField] private Transform forwardBlockingTransform;
@@ -34,20 +35,38 @@ namespace Game.Gameplay
         [Min(0.01f)]
         [SerializeField] private float backwardBlockingDistance = 2.0f;
         [SerializeField] private LayerMask blockingLayerMask;
+
+        [Header("Driving Settings: ")]
+        [Min(15.0f)]
+        [SerializeField] private float ignoreRotationAngle = 45.0f;
+        [Min(0.01f)]
+        [SerializeField] private float minSpeedToReduceAtCloseDist = 20.0f;
+        [Min(0.01f)]
+        [SerializeField] private float reduceSpeedDistance = 5.0f;
+        [Min(0.01f)]
+        [SerializeField] private float waypointCheckDistance = 5.0f;
         public Transform Target { get => target; set => target = value; }
-        public float MinPatrolTime { get => minPatrolTime; set => minPatrolTime = value; }
-        public float MaxPatrolTime { get => maxPatrolTime; set => maxPatrolTime = value; }
+        public float MinPatrolTime { get => minPatrolTime;}
+        public float MaxPatrolTime { get => maxPatrolTime;}
         public float MinPatrolRadius { get => minPatrolRadius; }
         public float MaxPatrolRadius { get => maxPatrolRadius; }
         public float ChaseRadius { get => chaseRadius; }
         public float AttackRadius { get => attackRadius; }
         public Transform CheckTarget { get => checkTarget;}
+        public float WaypointCheckDistance { get => waypointCheckDistance;}
+        public float PatrolSpeed { get => patrolSpeed;}
+        public float ChaseSpeed { get => chaseSpeed;}
 
         private Vehicle vehicle;
         private StateMachine stateMachine;
         private BasicEnemyPatrolState patrolState;
         private BasicEnemyChaseState chaseState;
         private BasicEnemyAttackState attackState;
+
+        public void SetSpeed(float speed)
+        {
+            this.vehicle.ForwardSpeed = speed;
+        }
 
         public void ApplyBrakes()
         {
@@ -59,38 +78,62 @@ namespace Game.Gameplay
             this.vehicle.BrakesApplied = false;
         }
 
-        public void HandleMovement(Vector3 moveDirection)
+        public void HandleMovement(Vector3 destination)
         {
-            if(moveDirection == Vector3.zero)
-            {
-                vehicle.Input = Vector2.zero;
-                return;
-            }
-            Vector2 moveInput = Vector2.zero;
-            float angle = Vector3.SignedAngle(transform.forward, moveDirection, transform.up);
-            //Debug.Log("Check angle: " + angle);
+            //Calculate move direction
+            Vector3 moveDirection = (destination - this.transform.position).normalized;
 
-            if(angle >= -ignoreRotationAngle/2.0f && angle <= ignoreRotationAngle/2.0f)
+            Vector2 moveInput = Vector2.zero;
+            //Calculate the angle between car's forward direction and move direction.
+            //If angle is under range of ignoreRotationAngle, then don't steer.
+            //(this is done to avoid zigzag movement at the end of destination).
+            //Otherwise, calculate the steer input based sign of angle.
+
+            float angle = Vector3.SignedAngle(transform.forward, moveDirection, transform.up);
+            if (angle >= -ignoreRotationAngle / 2.0f && angle <= ignoreRotationAngle / 2.0f)
             {
                 moveInput.x = 0.0f;
             }
             else
             {
-                float steerInput = Vector3.Dot(moveDirection, transform.right);
+                float steerInput = Mathf.Sign(angle);//Vector3.Dot(transform.right, moveDirection);
                 moveInput.x = steerInput;
             }
 
-            moveInput.y = Vector3.Dot(transform.forward, moveDirection);
+            //Now, calculate acceleration input.
+            float sqrDistance = Vector3.SqrMagnitude(destination - transform.position);
 
+            //Check if it's there's anything blocking in forward direction,
+            //if yes, then move backward.
             if (IsBlockingForward())
             {
+                Debug.Log("Blocking forward, now reversing");
                 moveInput.y = -1.0f;
             }
+            //Else if, Check if it's there's anything blocking in backward direction,
+            //if yes, then move forward.
             else if (IsBlockingBackward())
             {
+                Debug.Log("Blocking backward, now accelerating");
                 moveInput.y = 1.0f;
             }
-            
+            //Else if, check if our car's speed is greater than or equal to a specific amount
+            //And also the distance between our's and destination is less than specific amount.
+            //Then, we will reduce the speed of a car 
+            else if(Mathf.Abs(this.vehicle.GetCurrentSpeed()) >= minSpeedToReduceAtCloseDist && sqrDistance < reduceSpeedDistance * reduceSpeedDistance)
+            {
+                Debug.Log("Reducing speed");
+                moveInput.y = -Vector3.Dot(transform.forward, moveDirection);
+                
+            }
+            //Else, if all goes well, then we will calculate accelerationInput based on
+            //dot product between our car's forward direction and move direction
+            else
+            {
+                Debug.Log("Now moving");
+                moveInput.y = Vector3.Dot(transform.forward, moveDirection);
+            }
+
             vehicle.Input = moveInput;
         }
 
@@ -125,14 +168,14 @@ namespace Game.Gameplay
 
             stateMachine.AddTransition(patrolState, 
                                        chaseState, 
-                                       new FuncPredicate(() => 
-                                       Vector3.SqrMagnitude(target.position - checkTarget.position) <= 
+                                       new FuncPredicate(() =>
+                                       this.target.gameObject.activeInHierarchy && Vector3.SqrMagnitude(target.position - checkTarget.position) <= 
                                        chaseRadius * chaseRadius));
 
             stateMachine.AddTransition(chaseState,
                                        attackState,
                                        new FuncPredicate(() =>
-                                       Vector3.SqrMagnitude(target.position - checkTarget.position) <=
+                                       this.target.gameObject.activeInHierarchy && Vector3.SqrMagnitude(target.position - checkTarget.position) <=
                                        attackRadius * attackRadius));
 
             stateMachine.AddTransition(attackState,

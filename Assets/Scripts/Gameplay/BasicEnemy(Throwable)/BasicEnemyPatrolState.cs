@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Game.Core;
 using Game.StateMachineHandling;
 using System.Collections;
 namespace Game.Gameplay
@@ -16,10 +17,11 @@ namespace Game.Gameplay
             this.enemy = enemy;
             this.destinationGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
             this.destinationGO.GetComponent<Collider>().enabled = false;
+            path = new NavMeshPath();
         }
         public void OnEnter()
         {
-            path = new NavMeshPath();
+            this.enemy.SetSpeed(this.enemy.PatrolSpeed);
             patrolCoroutine = this.enemy.StartCoroutine(Patrol());
             this.destinationGO.SetActive(true);
         }
@@ -99,18 +101,17 @@ namespace Game.Gameplay
 
                 int pathIndex = 0;
 
-                this.enemy.UnapplyBrakes();
-
                 Debug.Log("Now moving on a path");
                 while(pathIndex < this.path.corners.Length)
                 {
+                    this.enemy.UnapplyBrakes();
                     Vector3 currentWaypoint = this.path.corners[pathIndex];
-                    Vector3 moveDirection = (currentWaypoint - this.enemy.transform.position).normalized;
-
-                    if(Vector3.SqrMagnitude(currentWaypoint - this.enemy.transform.position) > 4.0f * 4.0f)
+                    //Debug.DrawLine(this.enemy.transform.position, currentWaypoint, Color.red);
+                    Utility.DrawPath(path, Color.red);    
+                    float waypointCheckDistanceSqr = this.enemy.WaypointCheckDistance * this.enemy.WaypointCheckDistance;
+                    if(Vector3.SqrMagnitude(currentWaypoint - this.enemy.transform.position) > waypointCheckDistanceSqr)
                     {
-                        moveDirection = (currentWaypoint - this.enemy.transform.position).normalized;
-                        this.enemy.HandleMovement(moveDirection);
+                        this.enemy.HandleMovement(currentWaypoint);
                     }
                     else
                     {
