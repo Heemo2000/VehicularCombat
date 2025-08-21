@@ -63,7 +63,7 @@ namespace Game.Gameplay
         [SerializeField] private AnimationCurve fakeSpeedCurve;
         [Tooltip("Max torque of car in N-m")]
         [Min(1.0f)]
-        [SerializeField] private float maxTorque = 1000.0f;
+        [SerializeField] private float forwardTorque = 10000.0f;
 
         [SerializeField] private AnimationCurve powerCurve;
 
@@ -74,6 +74,8 @@ namespace Game.Gameplay
         [Tooltip("reverse speed of a car in m/s")]
         [Min(0.5f)]
         [SerializeField] private float reverseSpeed = 10.0f;
+        [Min(0.01f)]
+        [SerializeField] private float brakingTorque = 2000.0f;
         [Min(0.1f)]
         [SerializeField] private float turnRadius = 5.0f;
 
@@ -99,6 +101,7 @@ namespace Game.Gameplay
 
         private Vector2 input = Vector2.zero;
         private Vector2 currentInput = Vector2.zero;
+        private bool brakesApplied = false;
 
         private int groundChecksCount = 0;
         private Coroutine resetOrientationCoroutine = null;
@@ -114,6 +117,13 @@ namespace Game.Gameplay
         public bool IsGrounded { get => groundChecksCount > 0 && Vector3.Dot(transform.up, Vector3.up) > 0.0f; }
         public float ForwardSpeed { get => forwardSpeed; set => forwardSpeed = value; }
         public float ReverseSpeed { get => reverseSpeed; set => reverseSpeed = value; }
+        public bool BrakesApplied { get => brakesApplied; set => brakesApplied = value; }
+
+        public void ApplyInstantBrakes()
+        {
+            input = Vector2.zero;
+            vehicleRB.linearVelocity = Vector3.zero;
+        }
 
         public float GetNormalLeftWheelAngle()
         {
@@ -151,7 +161,7 @@ namespace Game.Gameplay
 
         private void ApplyGravity()
         {
-            if(!IsGrounded)
+            if(groundChecksCount < 3)
             {
                 vehicleRB.AddForce(-Vector3.up * mass * gravity);
             }
@@ -210,12 +220,22 @@ namespace Game.Gameplay
 
             float normalizedSpeed = GetNormalizedSpeed();
 
-            //Debug.Log("Normalized speed: " + normalizedSpeed);
+            Debug.Log("Normalized speed: " + normalizedSpeed);
 
-            float availaibleTorque = (currentInput.y != 0.0f) ? powerCurve.Evaluate(normalizedSpeed) * maxTorque * currentInput.y : 0.0f;
+            float availaibleTorque = (currentInput.y != 0.0f) ? powerCurve.Evaluate(normalizedSpeed) * forwardTorque * currentInput.y : 0.0f;
             //Debug.Log("Availaible torque: " + availaibleTorque);
 
-            Vector3 accelerationForce = (normalizedSpeed < 1.0f) ? accelDir * availaibleTorque : Vector3.zero;
+            Vector3 accelerationForce = Vector3.zero;
+
+            //If brakes are applied, apply braking torque
+            if(brakesApplied)
+            {
+                accelerationForce = (normalizedSpeed >= 0.005f) ? -accelDir * brakingTorque : Vector3.zero;
+            }
+            else if (normalizedSpeed < 1.0f)
+            {
+                accelerationForce = accelDir * availaibleTorque;
+            }
 
             //Debug.Log("Acceleration Force: " + accelerationForce);
 

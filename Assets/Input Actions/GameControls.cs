@@ -101,6 +101,15 @@ namespace Game.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Brakes"",
+                    ""type"": ""Button"",
+                    ""id"": ""b463ed18-03e2-44d0-afed-185cb04ba22e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -169,6 +178,17 @@ namespace Game.Input
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""737cfb38-5d85-4380-abf0-81e409efd81b"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brakes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -178,6 +198,7 @@ namespace Game.Input
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+            m_Player_Brakes = m_Player.FindAction("Brakes", throwIfNotFound: true);
         }
 
         ~@GameControls()
@@ -259,6 +280,7 @@ namespace Game.Input
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
+        private readonly InputAction m_Player_Brakes;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -274,6 +296,10 @@ namespace Game.Input
             /// Provides access to the underlying input action "Player/Move".
             /// </summary>
             public InputAction @Move => m_Wrapper.m_Player_Move;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Brakes".
+            /// </summary>
+            public InputAction @Brakes => m_Wrapper.m_Player_Brakes;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -303,6 +329,9 @@ namespace Game.Input
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Brakes.started += instance.OnBrakes;
+                @Brakes.performed += instance.OnBrakes;
+                @Brakes.canceled += instance.OnBrakes;
             }
 
             /// <summary>
@@ -317,6 +346,9 @@ namespace Game.Input
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+                @Brakes.started -= instance.OnBrakes;
+                @Brakes.performed -= instance.OnBrakes;
+                @Brakes.canceled -= instance.OnBrakes;
             }
 
             /// <summary>
@@ -364,6 +396,13 @@ namespace Game.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMove(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Brakes" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnBrakes(InputAction.CallbackContext context);
         }
     }
 }

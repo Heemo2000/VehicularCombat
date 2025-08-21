@@ -24,6 +24,8 @@ namespace Game.Gameplay
             if (vehicle != null) 
             {
                 vehicle.Input = moveInput;
+                vehicle.BrakesApplied = input.BrakeApplied;
+                
             }
         }
     }
