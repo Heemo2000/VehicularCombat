@@ -63,21 +63,25 @@ namespace Game.Gameplay
         private BasicEnemyChaseState chaseState;
         private BasicEnemyAttackState attackState;
 
+        //This method is responsible for setting the speed of a car
         public void SetSpeed(float speed)
         {
             this.vehicle.ForwardSpeed = speed;
         }
 
+        //This method is responsible for turning the brakes on
         public void ApplyBrakes()
         {
             this.vehicle.BrakesApplied = true;
         }
 
+        //This method is responsible for turning the brakes off
         public void UnapplyBrakes()
         {
             this.vehicle.BrakesApplied = false;
         }
 
+        //This method is responsible for moving towards the point.
         public void HandleMovement(Vector3 destination)
         {
             //Calculate move direction
@@ -87,7 +91,7 @@ namespace Game.Gameplay
             //Calculate the angle between car's forward direction and move direction.
             //If angle is under range of ignoreRotationAngle, then don't steer.
             //(this is done to avoid zigzag movement at the end of destination).
-            //Otherwise, calculate the steer input based sign of angle.
+            //Otherwise, calculate the steer input based on angle and max steer angle.
 
             float angle = Vector3.SignedAngle(transform.forward, moveDirection, transform.up);
             if (angle >= -ignoreRotationAngle / 2.0f && angle <= ignoreRotationAngle / 2.0f)
@@ -96,7 +100,9 @@ namespace Game.Gameplay
             }
             else
             {
-                float steerInput = Mathf.Sign(angle);//Vector3.Dot(transform.right, moveDirection);
+                float leftAngle = Mathf.Abs(vehicle.GetNormalLeftWheelAngle());
+                float rightAngle = Mathf.Abs(vehicle.GetNormalRightWheelAngle());
+                float steerInput = Mathf.Clamp(angle / Mathf.Max( leftAngle, rightAngle), -1, 1);//Mathf.Sign(angle);//Vector3.Dot(transform.right, moveDirection);
                 moveInput.x = steerInput;
             }
 
@@ -137,11 +143,13 @@ namespace Game.Gameplay
             vehicle.Input = moveInput;
         }
 
+        //This method is responsible for applying brakes instantly.
         public void ApplyInstantBrakes()
         {
             vehicle.ApplyInstantBrakes();
         }
 
+        //This method is responsible for checking if something is blocking in forward direction
         private bool IsBlockingForward()
         {
             return Physics.Raycast(forwardBlockingTransform.position, 
@@ -150,6 +158,7 @@ namespace Game.Gameplay
                                    blockingLayerMask.value);
         }
 
+        //This method is responsible for checking if something is blocking in backward direction
         private bool IsBlockingBackward()
         {
             return Physics.Raycast(backwardBlockingTransform.position,
@@ -161,22 +170,33 @@ namespace Game.Gameplay
         private void Awake()
         {
             vehicle = GetComponent<Vehicle>();
+            
+            //Created state machine
+            //Added states such as patrol, chase and attack
             stateMachine = new StateMachine();
             patrolState = new BasicEnemyPatrolState(this);
             chaseState = new BasicEnemyChaseState(this);
             attackState = new BasicEnemyAttackState(this);
 
+
+            //State machine will go from patrol to chase state
+            //Only when the distance between target and the check target's position is less than chase radius
             stateMachine.AddTransition(patrolState, 
                                        chaseState, 
                                        new FuncPredicate(() =>
                                        this.target.gameObject.activeInHierarchy && Vector3.SqrMagnitude(target.position - checkTarget.position) <= 
                                        chaseRadius * chaseRadius));
 
+            //State machine will go from chase to attack state
+            //Only when the distance between target and the check target's position is less than attack radius
             stateMachine.AddTransition(chaseState,
                                        attackState,
                                        new FuncPredicate(() =>
                                        this.target.gameObject.activeInHierarchy && Vector3.SqrMagnitude(target.position - checkTarget.position) <=
                                        attackRadius * attackRadius));
+
+            //State machine will go from attack to chase state
+            //Only when the distance between target and the check target's position is greater than attack radius
 
             stateMachine.AddTransition(attackState,
                                        chaseState,
@@ -184,6 +204,9 @@ namespace Game.Gameplay
                                        Vector3.SqrMagnitude(target.position - checkTarget.position) >
                                        attackRadius * attackRadius
                                        ));
+
+            //State machine will go from chase to patrol state
+            //Only when the distance between target and the check target's position is greater than chase radius
 
             stateMachine.AddTransition(chaseState,
                                        patrolState,

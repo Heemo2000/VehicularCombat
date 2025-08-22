@@ -2827,7 +2827,7 @@ MonoBehaviour:
   minPatrolRadius: 36
   maxPatrolRadius: 64
   chaseRadius: 35
-  attackRadius: 20
+  attackRadius: 10
   checkTarget: {fileID: 1373847487}
   patrolSpeed: 10
   chaseSpeed: 20
@@ -2838,7 +2838,7 @@ MonoBehaviour:
   blockingLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  ignoreRotationAngle: 15
+  ignoreRotationAngle: 30
   minSpeedToReduceAtCloseDist: 15
   reduceSpeedDistance: 10
   waypointCheckDistance: 10
@@ -3216,7 +3216,7 @@ Transform:
   m_GameObject: {fileID: 1982041949}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 2.7, z: -38.93}
+  m_LocalPosition: {x: -36.6, y: 2.7, z: -38.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3513,8 +3513,8 @@ MonoBehaviour:
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_OverrideVoxelSize: 1
+  m_VoxelSize: 0.3333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 06a3d769231f479488d4abb05c4daeeb, type: 2}
   m_BuildHeightMesh: 0
