@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 45786014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.546, z: 2.544}
+  m_LocalPosition: {x: 0, y: 0.546, z: 2.477}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1681,7 +1681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1159621994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2365,7 +2365,7 @@ Transform:
   m_GameObject: {fileID: 1759221105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.546, z: -2.544}
+  m_LocalPosition: {x: 0, y: 0.546, z: -2.471}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2801,7 +2801,10 @@ GameObject:
   - component: {fileID: 1982041953}
   - component: {fileID: 1982041952}
   - component: {fileID: 1982041951}
-  - component: {fileID: 1982041950}
+  - component: {fileID: 1982041957}
+  - component: {fileID: 1982041956}
+  - component: {fileID: 1982041955}
+  - component: {fileID: 1982041958}
   m_Layer: 3
   m_Name: Basic Enemy Car
   m_TagString: Untagged
@@ -2809,39 +2812,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1982041950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1982041949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99bc95737e39eba4c9f3e4c61963333a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1159621998}
-  minPatrolTime: 1
-  maxPatrolTime: 2.5
-  minPatrolRadius: 36
-  maxPatrolRadius: 64
-  chaseRadius: 35
-  attackRadius: 10
-  checkTarget: {fileID: 1373847487}
-  patrolSpeed: 10
-  chaseSpeed: 20
-  forwardBlockingTransform: {fileID: 45786015}
-  forwardBlockingDistance: 2
-  backwardBlockingTransform: {fileID: 1759221106}
-  backwardBlockingDistance: 2
-  blockingLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  ignoreRotationAngle: 30
-  minSpeedToReduceAtCloseDist: 15
-  reduceSpeedDistance: 10
-  waypointCheckDistance: 10
 --- !u!114 &1982041951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2865,39 +2835,21 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: 5.0061727
-        outSlope: 5.0061727
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.1997534
-        value: 1
-        inSlope: 0.8412008
-        outSlope: 0.8412008
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.35018495
-        value: 0.5
-        inSlope: -1.8927205
-        outSlope: -1.8927205
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.2
-        inSlope: -0.46166983
-        outSlope: -0.46166983
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -2914,39 +2866,21 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: 5.0061727
-        outSlope: 5.0061727
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.1997534
-        value: 1
-        inSlope: 0.8412008
-        outSlope: 0.8412008
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.35018495
-        value: 0.5
-        inSlope: -1.8927205
-        outSlope: -1.8927205
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.2
-        inSlope: -0.46166983
-        outSlope: -0.46166983
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -2963,39 +2897,21 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: 5.0061727
-        outSlope: 5.0061727
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.1997534
-        value: 1
-        inSlope: 0.8412008
-        outSlope: 0.8412008
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.35018495
-        value: 0.5
-        inSlope: -1.8927205
-        outSlope: -1.8927205
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.2
-        inSlope: -0.46166983
-        outSlope: -0.46166983
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -3012,39 +2928,21 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: 5.0061727
-        outSlope: 5.0061727
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.1997534
-        value: 1
-        inSlope: 0.8412008
-        outSlope: 0.8412008
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.35018495
-        value: 0.5
-        inSlope: -1.8927205
-        outSlope: -1.8927205
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.2
-        inSlope: -0.46166983
-        outSlope: -0.46166983
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -3153,7 +3051,7 @@ MonoBehaviour:
   forwardSpeed: 15
   reverseSpeed: 60
   brakingTorque: 2000
-  turnRadius: 3
+  turnRadius: 5
   antiRollbarEnabled: 0
   stiffness: 100
   rollAngle: 1
@@ -3227,6 +3125,103 @@ Transform:
   - {fileID: 1759221106}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1982041955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982041949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9340534550a8de34b8e65dd9ec905217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardBlockingCheck: {fileID: 45786015}
+  forwardBlockingCheckDistance: 1.5
+  backwardBlockingCheck: {fileID: 1759221106}
+  backwardBlockingCheckDistance: 1.5
+  ignoreRotationAngle: 15
+  minSpeedToReduceAtCloseDist: 20
+  reduceSpeedDistance: 5
+  blockingLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  avoidObstacleHandler: {fileID: 1982041956}
+--- !u!114 &1982041956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982041949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b6140f1ca54ec469d213a5300f3e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleAvoidTransform: {fileID: 45786015}
+  avoidDistance: 5
+  avoidAngle: 90
+  avoidRayCount: 8
+  avoidLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1982041957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982041949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294a0c9d52a716442b6040fb5fe86acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1159621998}
+  ignoreTarget: 0
+  minPatrolTime: 1
+  maxPatrolTime: 2.5
+  patrolRange: 28
+  chaseRange: 24
+  fireRange: 18
+  patrolSpeed: 10
+  chaseSpeed: 20
+  retreatSpeed: 30
+  retreatCooldownTime: 10
+  minHealth: 25
+  updateWaypointsTime: 1
+  waypointCheckDistance: 2.5
+  pointFollower: {fileID: 1982041955}
+--- !u!114 &1982041958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982041949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fff03641c481a459cd673be08a525b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  OnHealthDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthHealed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCurrentHealthSet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthUpdated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2032132581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,10 +3506,10 @@ MonoBehaviour:
   m_GenerateLinks: 1
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
+  m_OverrideTileSize: 1
   m_TileSize: 256
   m_OverrideVoxelSize: 1
-  m_VoxelSize: 0.3333334
+  m_VoxelSize: 0.6
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 06a3d769231f479488d4abb05c4daeeb, type: 2}
   m_BuildHeightMesh: 0
