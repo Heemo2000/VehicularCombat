@@ -1,27 +1,25 @@
-using UnityEngine;
 using Game.StateMachineHandling;
+using UnityEngine;
 
-namespace Game.Gameplay
+namespace Game.Gameplay.EnemyManagement
 {
-    public class BasicEnemyChaseState : IState
+    public class MachineGunEnemyFireState : IState
     {
-        private BasicEnemy enemy = null;
+        private MachineGunEnemy enemy;
 
-        public BasicEnemyChaseState(BasicEnemy enemy)
+        public MachineGunEnemyFireState(MachineGunEnemy enemy)
         {
             this.enemy = enemy;
         }
 
         public void OnEnter()
         {
-            this.enemy.UnapplyBrakes();
-            this.enemy.SetSpeed(this.enemy.ChaseSpeed);
+            this.enemy.ApplyBrakes();
         }
-
 
         public void OnUpdate()
         {
-            this.enemy.HandleMovement(this.enemy.Target.position);
+
         }
 
         public void OnFixedUpdate()
@@ -36,7 +34,7 @@ namespace Game.Gameplay
 
         public void OnExit()
         {
-
+            this.enemy.UnapplyBrakes();
         }
     }
 }

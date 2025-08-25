@@ -153,11 +153,17 @@ namespace Game.Gameplay
             return Mathf.Sign(currentSpeed);
         }
 
-        public float GetNormalizedSpeed()
+        public float GetClampedNormalizedSpeed()
         {
             return Mathf.Clamp01(Mathf.Abs(GetCurrentSpeed()) /
                                                  ((currentInput.y >= 0.0f) ? forwardSpeed : reverseSpeed));
         }
+
+        public float GetNormalizedSpeed()
+        {
+            return GetCurrentSpeed() / ((currentInput.y >= 0.0f) ? forwardSpeed : reverseSpeed);
+        }
+
 
         private void ApplyGravity()
         {
@@ -218,11 +224,11 @@ namespace Game.Gameplay
 
             //Debug.Log("Car Speed: " + carSpeed);
 
-            float normalizedSpeed = GetNormalizedSpeed();
+            float clampedNormalizedSpeed = GetClampedNormalizedSpeed();
 
             //Debug.Log("Normalized speed: " + normalizedSpeed);
 
-            float availaibleTorque = (currentInput.y != 0.0f) ? powerCurve.Evaluate(normalizedSpeed) * forwardTorque * currentInput.y : 0.0f;
+            float availaibleTorque = (currentInput.y != 0.0f) ? powerCurve.Evaluate(clampedNormalizedSpeed) * forwardTorque * currentInput.y : 0.0f;
             //Debug.Log("Availaible torque: " + availaibleTorque);
 
             Vector3 accelerationForce = Vector3.zero;
@@ -230,9 +236,9 @@ namespace Game.Gameplay
             //If brakes are applied, apply braking torque
             if(brakesApplied)
             {
-                accelerationForce = (normalizedSpeed >= 0.005f) ? -accelDir * brakingTorque : Vector3.zero;
+                accelerationForce = (GetNormalizedSpeed() >= 0.005f) ? -accelDir * brakingTorque : Vector3.zero;
             }
-            else if (normalizedSpeed < 1.0f)
+            else if (clampedNormalizedSpeed < 1.0f)
             {
                 accelerationForce = accelDir * availaibleTorque;
             }
@@ -268,7 +274,7 @@ namespace Game.Gameplay
             if (wheelFL != null && wheelFL.suspension != null)
             {
                 float leftWheelAngle = Mathf.Rad2Deg * Mathf.Atan(wheelBase / (turnRadius + Mathf.Sign(input.x) * (rearTrack / 2.0f))) * currentInput.x;
-                leftWheelAngle *= wheelFL.steerCurve.Evaluate(GetNormalizedSpeed());
+                leftWheelAngle *= wheelFL.steerCurve.Evaluate(GetClampedNormalizedSpeed());
 
                 Vector3 leftWheelEulerAngles = wheelFL.suspension.localEulerAngles;
                 leftWheelEulerAngles.y = leftWheelAngle;
@@ -279,7 +285,7 @@ namespace Game.Gameplay
             if (wheelFR != null && wheelFR.suspension != null)
             {
                 float rightWheelAngle = Mathf.Rad2Deg * Mathf.Atan(wheelBase / (turnRadius - Mathf.Sign(input.x) * (rearTrack / 2.0f))) * currentInput.x;
-                rightWheelAngle *= wheelFR.steerCurve.Evaluate(GetNormalizedSpeed());
+                rightWheelAngle *= wheelFR.steerCurve.Evaluate(GetClampedNormalizedSpeed());
 
                 Vector3 rightWheelEulerAngles = wheelFR.suspension.localEulerAngles;
                 rightWheelEulerAngles.y = rightWheelAngle;
@@ -363,7 +369,7 @@ namespace Game.Gameplay
 
             data.TireRotationX += GetAcceleratingDirection() *
                                   maxFakeWheelSpeed *
-                                  fakeSpeedCurve.Evaluate(GetNormalizedSpeed()) *
+                                  fakeSpeedCurve.Evaluate(GetClampedNormalizedSpeed()) *
                                   Time.deltaTime;
 
             wheelRotation *= Quaternion.AngleAxis(data.TireRotationX,
@@ -389,7 +395,7 @@ namespace Game.Gameplay
 
         private void HandleOrientation()
         {
-            if (GetNormalizedSpeed() > 0.05f || Vector3.Dot(transform.up, Vector3.up) >= 0.0f)
+            if (GetClampedNormalizedSpeed() > 0.05f || Vector3.Dot(transform.up, Vector3.up) >= 0.0f)
             {
                 return;
             }

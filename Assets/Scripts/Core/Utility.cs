@@ -73,6 +73,12 @@ namespace Game.Core
                                0.1f);
             }
         }
+    
+        public static bool IsUnderDistance(Vector3 start, Vector3 end, float distance)
+        {
+            float sqrDistance = Vector3.SqrMagnitude(end - start);
+            return sqrDistance <= distance * distance;
+        }
     }
 
 }

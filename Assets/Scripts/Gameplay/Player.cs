@@ -23,6 +23,15 @@ namespace Game.Gameplay
         {
             if (vehicle != null) 
             {
+                if(moveInput.y == 0.0f)
+                {
+                    vehicle.BrakesApplied = true;
+                }
+                else
+                {
+                    vehicle.BrakesApplied = false;
+                }
+                
                 vehicle.Input = moveInput;
                 vehicle.BrakesApplied = input.BrakeApplied;
                 

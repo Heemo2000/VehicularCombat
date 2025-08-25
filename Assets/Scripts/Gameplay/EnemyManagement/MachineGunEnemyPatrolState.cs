@@ -1,35 +1,38 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using Game.Core;
 using Game.StateMachineHandling;
-using System.Collections;
-namespace Game.Gameplay
+using Game.Core;
+
+namespace Game.Gameplay.EnemyManagement
 {
-    public class BasicEnemyPatrolState : IState
+    public class MachineGunEnemyPatrolState : IState
     {
-        private BasicEnemy enemy = null;
+        private MachineGunEnemy enemy;
         private float currentTime = 0.0f;
         private NavMeshPath path = null;
         private Coroutine patrolCoroutine = null;
         private GameObject destinationGO = null;
-        public BasicEnemyPatrolState(BasicEnemy enemy)
+
+        public MachineGunEnemyPatrolState(MachineGunEnemy enemy)
         {
             this.enemy = enemy;
             this.destinationGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
             this.destinationGO.GetComponent<Collider>().enabled = false;
             path = new NavMeshPath();
         }
+
         public void OnEnter()
         {
             this.enemy.SetSpeed(this.enemy.PatrolSpeed);
             patrolCoroutine = this.enemy.StartCoroutine(Patrol());
             this.destinationGO.SetActive(true);
+            Random.InitState((int)System.DateTime.Now.Ticks);
         }
-
 
         public void OnUpdate()
         {
-
+            
         }
 
         public void OnFixedUpdate()
@@ -41,6 +44,7 @@ namespace Game.Gameplay
         {
             
         }
+        
 
         public void OnExit()
         {
@@ -53,19 +57,18 @@ namespace Game.Gameplay
         {
             yield return null;
             float randomTime = Random.Range(this.enemy.MinPatrolTime, this.enemy.MaxPatrolTime);
-            Vector2 random2D = Random.insideUnitCircle;
-            Vector3 randomPatrolPosition = this.enemy.CheckTarget.position +
-                                           new Vector3(random2D.x, 0.0f, random2D.y) *
-                                           Random.Range(this.enemy.MinPatrolRadius, this.enemy.MaxPatrolRadius);
+            Vector2 random2D = Vector3.zero;
+            Vector3 randomPatrolPosition = Vector3.zero;
+
             NavMeshHit hit;
 
-            while (true)
+            while (this.enemy.enabled)
             {
                 currentTime = 0.0f;
                 randomTime = Random.Range(this.enemy.MinPatrolTime, this.enemy.MaxPatrolTime);
 
                 yield return null;
-                Debug.Log("Waiting for " + randomTime + " seconds");
+                //Debug.Log("Waiting for " + randomTime + " seconds");
                 while (currentTime < randomTime)
                 {
 
@@ -74,57 +77,60 @@ namespace Game.Gameplay
                     yield return null;
                 }
 
-                Debug.Log("Calculating random patrol position");
+                //Debug.Log("Calculating random patrol position");
 
-                randomPatrolPosition = this.enemy.CheckTarget.position +
+                random2D = Random.insideUnitCircle;
+                randomPatrolPosition = this.enemy.transform.position +
                                                new Vector3(random2D.x, 0.0f, random2D.y) *
-                                               Random.Range(this.enemy.MinPatrolRadius, this.enemy.MaxPatrolRadius);
+                                               this.enemy.PatrolRange;
 
-                while (!NavMesh.SamplePosition(randomPatrolPosition, out hit, 1.0f, NavMesh.AllAreas))
+                while (!NavMesh.SamplePosition(randomPatrolPosition, out hit, 1.0f, 1 << Constants.NAVMESH_WALKABLE))
                 {
+                    Debug.Log("Finding random patrol position");
                     random2D = Random.insideUnitCircle;
-                    randomPatrolPosition = this.enemy.CheckTarget.position +
+                    randomPatrolPosition = this.enemy.transform.position +
                                                new Vector3(random2D.x, 0.0f, random2D.y) *
-                                               Random.Range(this.enemy.MinPatrolRadius, this.enemy.MaxPatrolRadius);
+                                               this.enemy.PatrolRange;
 
                     //this.destinationGO.transform.position = randomPatrolPosition;
                     yield return null;
                 }
 
+                //randomPatrolPosition = hit.position;
                 this.destinationGO.transform.position = randomPatrolPosition;
 
-                Debug.Log("Calculating path");
-                while(!NavMesh.CalculatePath(this.enemy.transform.position, randomPatrolPosition, NavMesh.AllAreas, path))
-                {
-                    yield return null;
-                }
+                //Debug.Log("Calculating path");
+                NavMesh.CalculatePath(this.enemy.transform.position, randomPatrolPosition, NavMesh.AllAreas, path);
 
                 int pathIndex = 0;
 
-                Debug.Log("Now moving on a path");
-                while(pathIndex < this.path.corners.Length)
+                //Debug.Log("Now moving on a path");
+                while (pathIndex < this.path.corners.Length)
                 {
                     this.enemy.UnapplyBrakes();
                     Vector3 currentWaypoint = this.path.corners[pathIndex];
-                    //Debug.DrawLine(this.enemy.transform.position, currentWaypoint, Color.red);
-                    Utility.DrawPath(path, Color.red);    
+                    Debug.DrawLine(this.enemy.transform.position, currentWaypoint, Color.red);
+                    Utility.DrawPath(path, Color.red);
                     float waypointCheckDistanceSqr = this.enemy.WaypointCheckDistance * this.enemy.WaypointCheckDistance;
-                    if(Vector3.SqrMagnitude(currentWaypoint - this.enemy.transform.position) > waypointCheckDistanceSqr)
+                    if (Vector3.SqrMagnitude(currentWaypoint - this.enemy.transform.position) > waypointCheckDistanceSqr)
                     {
-                        this.enemy.HandleMovement(currentWaypoint);
+                        this.enemy.UnapplyBrakes();
+                        this.enemy.GoToPoint(currentWaypoint);
                     }
                     else
                     {
+                        this.enemy.ApplyBrakes();
                         pathIndex++;
                     }
+
                     yield return null;
                 }
 
             }
-            
 
 
-            
+
+
         }
     }
 }
