@@ -1,5 +1,10 @@
+using Game;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+
 
 public class CarController : MonoBehaviour
 {
@@ -23,18 +28,26 @@ public class CarController : MonoBehaviour
 
 
     [Header("Movement")]
+    public bool IsMobile= false;
+    [SerializeField] Joystick MovementJoystick;
+   
+    [SerializeField] Button brakebutton;
     private float HorizontalInput;
     private float VerticalInput;
     private float currentSteeringAngle;
     private float currentBrakeForce;
     private bool IsBraking;
 
+    [Header("Weapon")]
+    [SerializeField] Joystick RotationJoystick;
+    [SerializeField] GameObject weaponMachine;
+    [SerializeField] int rotationSpeed;
 
     
  void Start()
  {
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.centerOfMass = new Vector3(0,0.5f, 0);
+        rb.centerOfMass = new Vector3(0,0.05f, 0);
     }
 
         
@@ -44,16 +57,31 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        GunMachineRotation();
  }
 
     void GetInput()
     {
-        HorizontalInput = Input.GetAxis("Horizontal");
-        VerticalInput = Input.GetAxis("Vertical");
-        IsBraking = Input.GetKey(KeyCode.Space);
-    }
+        if (!IsMobile)
+        {
+            HorizontalInput = Input.GetAxis("Horizontal");
+            VerticalInput = Input.GetAxis("Vertical");
+            IsBraking = Input.GetKey(KeyCode.Space);
+        }
 
-    void HandleMotor()
+        else if (IsMobile)
+        {
+            HorizontalInput = MovementJoystick.Horizontal;
+            VerticalInput = MovementJoystick.Vertical;
+
+            
+
+        }
+
+        
+    }
+    
+    private void HandleMotor()
     {
         frontleftWheelCollider.motorTorque = motorForce * VerticalInput;
         frontRightWheelCollider.motorTorque = motorForce * VerticalInput;
@@ -62,7 +90,7 @@ public class CarController : MonoBehaviour
         ApplyBrakes();
     }
     
-    void ApplyBrakes()
+    public void ApplyBrakes()
     {
         frontleftWheelCollider.brakeTorque = currentBrakeForce;
         frontRightWheelCollider.brakeTorque = currentBrakeForce;
@@ -70,7 +98,7 @@ public class CarController : MonoBehaviour
         RearRightWheelCollider.brakeTorque = currentBrakeForce; 
     }
 
-    void HandleSteering()
+    private void HandleSteering()
     {
         currentSteeringAngle = SteeringAngle * HorizontalInput;
         frontRightWheelCollider.steerAngle = currentSteeringAngle;
@@ -95,5 +123,12 @@ public class CarController : MonoBehaviour
 
     }
 
+    private void GunMachineRotation()
+    {
+  
+        float horizontalInputRot = RotationJoystick.Horizontal;
+   // Rotate object on Y-axis
+        weaponMachine.transform.Rotate(Vector3.up * horizontalInputRot * rotationSpeed * Time.deltaTime);
+    }
 }
 
