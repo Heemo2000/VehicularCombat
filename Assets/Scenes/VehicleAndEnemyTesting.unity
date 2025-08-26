@@ -2052,7 +2052,7 @@ MonoBehaviour:
   obstacleAvoidTransform: {fileID: 45786015}
   avoidDistance: 10
   avoidAngle: 180
-  avoidRayCount: 16
+  avoidRayCount: 8
   avoidLayerMask:
     serializedVersion: 2
     m_Bits: 64

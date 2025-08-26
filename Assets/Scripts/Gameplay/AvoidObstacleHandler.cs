@@ -12,7 +12,7 @@ namespace Game.Gameplay
         [SerializeField] private float avoidDistance = 5.0f;
         [Min(15.0f)]
         [SerializeField] private float avoidAngle = 90.0f;
-        [Range(3, 8)]
+        [Range(3, 32)]
         [SerializeField] private int avoidRayCount = 8;
         [SerializeField] private LayerMask avoidLayerMask;
 
