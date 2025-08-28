@@ -6,6 +6,8 @@ namespace Game.Gameplay
 {
     public class FadeObjectBlockingObject : MonoBehaviour
     {
+        [Min(0.1f)]
+        [SerializeField] private float detectRadius = 1.0f;
         [SerializeField]
         private LayerMask layerMask;
         [SerializeField]
@@ -39,8 +41,9 @@ namespace Game.Gameplay
         {
             while (true)
             {
-                int hitsCount = Physics.RaycastNonAlloc(
+                int hitsCount = Physics.SphereCastNonAlloc(
                     lookCamera.transform.position,
+                    detectRadius,
                     (target.transform.position + targetPositionOffset - lookCamera.transform.position).normalized,
                     this.hits,
                     Vector3.Distance(lookCamera.transform.position, target.transform.position + targetPositionOffset),

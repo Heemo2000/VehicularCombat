@@ -11,5 +11,6 @@ namespace Game.Core
         public const string GAME_DATA_RELATIVE_PATH = "/game_data.json";
 
         public static int NAVMESH_WALKABLE = 0;
+        public static float DISTANCE_FROM_SCREEN_CENTRE = 5.0f;
     }
 }

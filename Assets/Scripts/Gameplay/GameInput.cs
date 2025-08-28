@@ -1,15 +1,34 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Game.Input;
+using Game.Core;
 
 namespace Game.Gameplay
 {
     public class GameInput : MonoBehaviour
     {
+        [SerializeField] private RectTransform joystickOuter;
+        [SerializeField] private bool forceJoystick = false;
         private GameControls controls;
         private bool brakeApplied = false;
 
         public bool BrakeApplied { get => brakeApplied;}
+
+        public Vector2 GetPointerPosition()
+        {
+            if(Mouse.current != null && !forceJoystick)
+            {
+                return controls.Player.AimPosition.ReadValue<Vector2>();
+            }
+
+            Vector2 start = joystickOuter.position;
+            Vector2 end = controls.Player.AimPosition.ReadValue<Vector2>();
+
+            Vector2 direction = (end - start).normalized;
+            Vector2 centre = new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);
+
+            return centre + direction * Constants.DISTANCE_FROM_SCREEN_CENTRE;
+        }
 
         public Vector2 GetMoveInput()
         {
