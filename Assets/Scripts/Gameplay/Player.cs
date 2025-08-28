@@ -6,6 +6,7 @@ namespace Game.Gameplay
     {
         
         [SerializeField] private AimHandler aimHandler;
+        [SerializeField] private Weapons.Weapon weapon;
         private Vehicle vehicle;
         private GameInput input;
         private Vector2 moveInput;

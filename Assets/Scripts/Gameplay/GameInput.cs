@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Game.Input;
 using Game.Core;
@@ -11,6 +12,10 @@ namespace Game.Gameplay
         [SerializeField] private bool forceJoystick = false;
         private GameControls controls;
         private bool brakeApplied = false;
+
+        public UnityEvent OnFireStarted;
+        public UnityEvent OnFirePerformed;
+        public UnityEvent OnFireReleased;
 
         public bool BrakeApplied { get => brakeApplied;}
 
@@ -46,6 +51,24 @@ namespace Game.Gameplay
             controls.Enable();
             controls.Player.Brakes.started += Brakes_started;
             controls.Player.Brakes.canceled += Brakes_canceled;
+            controls.Player.Fire.started += Fire_started;
+            controls.Player.Fire.performed += Fire_Performed;
+            controls.Player.Fire.canceled += Fire_canceled;
+        }
+
+        private void Fire_canceled(InputAction.CallbackContext context)
+        {
+            OnFireReleased?.Invoke();
+        }
+
+        private void Fire_started(InputAction.CallbackContext context)
+        {
+            OnFireStarted?.Invoke();
+        }
+
+        private void Fire_Performed(InputAction.CallbackContext context)
+        {
+            OnFirePerformed?.Invoke();
         }
 
         private void Brakes_canceled(InputAction.CallbackContext obj)
