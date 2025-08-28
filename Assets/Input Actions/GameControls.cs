@@ -110,6 +110,15 @@ namespace Game.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AimPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""08c0a16b-726c-4128-af73-e95637eb9b05"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -189,6 +198,28 @@ namespace Game.Input
                     ""action"": ""Brakes"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b65ced22-a060-474a-8a82-64a9a93eabee"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31b91a72-af3b-4869-8c80-3b5caa50d206"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -199,6 +230,7 @@ namespace Game.Input
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Brakes = m_Player.FindAction("Brakes", throwIfNotFound: true);
+            m_Player_AimPosition = m_Player.FindAction("AimPosition", throwIfNotFound: true);
         }
 
         ~@GameControls()
@@ -281,6 +313,7 @@ namespace Game.Input
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Brakes;
+        private readonly InputAction m_Player_AimPosition;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -300,6 +333,10 @@ namespace Game.Input
             /// Provides access to the underlying input action "Player/Brakes".
             /// </summary>
             public InputAction @Brakes => m_Wrapper.m_Player_Brakes;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/AimPosition".
+            /// </summary>
+            public InputAction @AimPosition => m_Wrapper.m_Player_AimPosition;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -332,6 +369,9 @@ namespace Game.Input
                 @Brakes.started += instance.OnBrakes;
                 @Brakes.performed += instance.OnBrakes;
                 @Brakes.canceled += instance.OnBrakes;
+                @AimPosition.started += instance.OnAimPosition;
+                @AimPosition.performed += instance.OnAimPosition;
+                @AimPosition.canceled += instance.OnAimPosition;
             }
 
             /// <summary>
@@ -349,6 +389,9 @@ namespace Game.Input
                 @Brakes.started -= instance.OnBrakes;
                 @Brakes.performed -= instance.OnBrakes;
                 @Brakes.canceled -= instance.OnBrakes;
+                @AimPosition.started -= instance.OnAimPosition;
+                @AimPosition.performed -= instance.OnAimPosition;
+                @AimPosition.canceled -= instance.OnAimPosition;
             }
 
             /// <summary>
@@ -403,6 +446,13 @@ namespace Game.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnBrakes(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "AimPosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAimPosition(InputAction.CallbackContext context);
         }
     }
 }
