@@ -17,6 +17,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Fence
+    second: {fileID: 2100000, guid: 5bd19bca13391bd4591c09fd8ba87f52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Plane0
     second: {fileID: 2100000, guid: a64aea95547d4654a822e77e4486d329, type: 2}
   - first:
