@@ -8758,7 +8758,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 250
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
@@ -8886,7 +8886,7 @@ MonoBehaviour:
     m_Bits: 64
   target: {fileID: 1421065553}
   lookCamera: {fileID: 353280633}
-  fadedAlpha: 0.33
+  fadedAlpha: 0.5
   retainShadows: 1
   targetPositionOffset: {x: 0, y: 1, z: 0}
   fadeSpeed: 3
@@ -11692,6 +11692,10 @@ PrefabInstance:
     - target: {fileID: 4334273191942849164, guid: b3f50fc295133ef49af82dfcf498e821, type: 3}
       propertyPath: m_Name
       value: Player Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689265388318747402, guid: b3f50fc295133ef49af82dfcf498e821, type: 3}
+      propertyPath: Lens.FarClipPlane
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 5689265388318747402, guid: b3f50fc295133ef49af82dfcf498e821, type: 3}
       propertyPath: Target.TrackingTarget
@@ -32448,30 +32452,6 @@ PrefabInstance:
     - target: {fileID: 250415723747923397, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
       propertyPath: m_Name
       value: Player Car 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285994826591588714, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: mass
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285994826591588714, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: forwardSpeed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285994826591588714, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: reverseSpeed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285994826591588714, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: interpolatedInput
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285994826591588714, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: steeringInputTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285994826591588714, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: accelerateInputTime
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
