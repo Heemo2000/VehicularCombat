@@ -7190,7 +7190,6 @@ Transform:
   - {fileID: 863547461}
   - {fileID: 489194724}
   - {fileID: 1915169515}
-  - {fileID: 813204059}
   m_Father: {fileID: 1523339694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251865169
@@ -34036,14 +34035,17 @@ PrefabInstance:
     - target: {fileID: 7434272633071641605, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
       propertyPath: 'firePoints.Array.data[3]'
       value: 
-      objectReference: {fileID: 813204059}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2873178777229035922, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 250876236}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 250415723747923397, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1421065556}
   m_SourcePrefab: {fileID: 100100000, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
 --- !u!4 &1421065553 stripped
 Transform:
@@ -34055,12 +34057,55 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7434272633071641605, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
   m_PrefabInstance: {fileID: 1421065552}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1421065555}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8f0a1d42121b1042937a3b580d3d0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1421065555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 250415723747923397, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
+  m_PrefabInstance: {fileID: 1421065552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1421065556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421065555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03041c0c85bf2a4eb57d8d05cc073a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commonAbilitiesData:
+  - abilityName: 
+    abilityIcon: {fileID: 0}
+    ability:
+      rid: 8859697605155750160
+  specialAbility:
+    abilityName: 
+    abilityIcon: {fileID: 0}
+    ability:
+      rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 8859697605155750160
+      type: {class: GrenadeAbility, ns: Game.Gameplay.AbilityManagement, asm: Game.Gameplay}
+      data:
+        coolDownTime: 8
+        coolDownHappening: 0
+        projectileGun: {fileID: 0}
+        aimHandler: {fileID: 0}
+        lineRenderer: {fileID: 0}
+        collisionLayerMask:
+          serializedVersion: 2
+          m_Bits: 64
 --- !u!1 &1423904086
 GameObject:
   m_ObjectHideFlags: 0
