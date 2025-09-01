@@ -3,11 +3,12 @@ using UnityEngine.UI;
 
 namespace Game.Gameplay.AbilityManagement
 {
-    [CreateAssetMenu(fileName = "AbilityData", menuName = "Abilities/AbilityData")]
-    public class AbilityData : ScriptableObject
+    [System.Serializable]
+    public class AbilityData
     {
         public string abilityName;
         public Image abilityIcon;
-        private Ability ability;
+        [SerializeReference]
+        public Ability ability;
     }
 }

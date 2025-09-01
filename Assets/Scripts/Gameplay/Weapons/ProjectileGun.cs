@@ -22,6 +22,12 @@ namespace Game.Gameplay.Weapons
 
         private ObjectPool<ProjectileBullet> bulletPool;
 
+        public Transform FirePoint { get => firePoint;}
+        public float Gravity { get => gravity;}
+        public float Speed { get => speed;}
+        public float Mass { get => mass;}
+        public float ThrowStrength { get => throwStrength;}
+
         public override void Fire()
         {
             var bullet = bulletPool.Get();
