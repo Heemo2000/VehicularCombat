@@ -9,7 +9,7 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 804e1ce4c496647cfa3f1a1134187c71, type: 3}
   _removeEmptyRootObjects: 1
-  _scaleFactor: 1
+  _scaleFactor: 0.25
   _deduplicateResources: 0
   _maximumLod: 300
   _readWriteEnabled: 1
@@ -47,17 +47,17 @@ ScriptedImporter:
 '
   optimizeGameObjects: 0
   materials:
-  - {instanceID: 0}
-  - {instanceID: 0}
-  - {instanceID: 0}
-  - {instanceID: 0}
-  - {instanceID: 0}
+  - {fileID: 4719585850759195942, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
+  - {fileID: -5950538193760904518, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
+  - {fileID: -1227090462887192078, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
+  - {fileID: 5662192110757766746, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
+  - {fileID: 5826003769542697059, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
   textures:
-  - {instanceID: 0}
-  - {instanceID: 0}
-  - {instanceID: 0}
-  - {instanceID: 0}
-  - {instanceID: 0}
+  - {fileID: 9216674395320056533, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
+  - {fileID: 5166512616040949498, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
+  - {fileID: -782643926796261481, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
+  - {fileID: 5592414657322250117, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
+  - {fileID: 7156069663806742832, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
   hasSceneData: 1
   hasAnimationData: 0
   hasMaterialData: 1
@@ -69,19 +69,19 @@ ScriptedImporter:
     used: 1
     required: 0
   _textures:
-  - texture: {instanceID: 0}
+  - texture: {fileID: 9216674395320056533, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
     shouldBeLinear: 0
     shouldBeNormalMap: 0
-  - texture: {instanceID: 0}
+  - texture: {fileID: 5166512616040949498, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
     shouldBeLinear: 0
     shouldBeNormalMap: 0
-  - texture: {instanceID: 0}
+  - texture: {fileID: -782643926796261481, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
     shouldBeLinear: 0
     shouldBeNormalMap: 0
-  - texture: {instanceID: 0}
+  - texture: {fileID: 5592414657322250117, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
     shouldBeLinear: 0
     shouldBeNormalMap: 0
-  - texture: {instanceID: 0}
+  - texture: {fileID: 7156069663806742832, guid: ce0df002636a30c44a8e440d06c6c7b4, type: 3}
     shouldBeLinear: 0
     shouldBeNormalMap: 0
   _mainAssetIdentifier: scenes/Scene
