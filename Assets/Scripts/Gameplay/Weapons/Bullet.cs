@@ -6,7 +6,8 @@ namespace Game.Gameplay.Weapons
     {
         [Min(0.01f)]
         [SerializeField] protected float destroyTime = 5.0f;
-
+        [Min(0.1f)]
+        [SerializeField] private float damage = 10.0f;
         private float currentTime = 0.0f;
         protected Rigidbody bulletRB;
         protected Collider bulletCollider;
@@ -40,6 +41,11 @@ namespace Game.Gameplay.Weapons
 
         protected virtual void OnTriggerEnter(Collider other)
         {
+            Health health = other.GetComponent<Health>();
+            if(health != null)
+            {
+                health.OnHealthDamaged?.Invoke(damage);
+            }
             Destroy();
         }
     }

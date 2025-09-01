@@ -12,7 +12,7 @@ namespace Game.Gameplay.Weapons
         [SerializeField] private Transform[] firePoints;
         [SerializeField] private LinearBullet bulletPrefab;
         [Min(100)]
-        [SerializeField] private int maxBulletsCount = 500;
+        [SerializeField] private int initialBulletsCount = 500;
         [Header("Barrel Settings: ")]
         [SerializeField] private Transform barrel;
         [Min(0.1f)]
@@ -109,7 +109,7 @@ namespace Game.Gameplay.Weapons
                                                           OnGetBullet, 
                                                           OnReturnBullet, 
                                                           OnDestroyBullet, 
-                                                          maxBulletsCount);
+                                                          initialBulletsCount, true);
             }
         }
 

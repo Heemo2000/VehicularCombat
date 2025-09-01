@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 namespace Game.Gameplay.AbilityManagement
 {
-    [System.Serializable]
-    public class AbilityData
+    [CreateAssetMenu(fileName = "AbilityData", menuName = "Abilities/AbilityData")]
+    public class AbilityData : ScriptableObject
     {
         public string abilityName;
         public Image abilityIcon;

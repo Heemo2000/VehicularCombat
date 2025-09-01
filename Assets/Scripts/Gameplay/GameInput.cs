@@ -12,7 +12,7 @@ namespace Game.Gameplay
         [SerializeField] private bool forceJoystick = false;
         private GameControls controls;
         private bool brakeApplied = false;
-
+        private bool shouldFire = false;
         public UnityEvent OnFireStarted;
         public UnityEvent OnFirePerformed;
         public UnityEvent OnFireReleased;
@@ -52,24 +52,30 @@ namespace Game.Gameplay
             controls.Player.Brakes.started += Brakes_started;
             controls.Player.Brakes.canceled += Brakes_canceled;
             controls.Player.Fire.started += Fire_started;
-            controls.Player.Fire.performed += Fire_Performed;
             controls.Player.Fire.canceled += Fire_canceled;
+        }
+
+        private void Update()
+        {
+            if(shouldFire)
+            {
+                OnFirePerformed?.Invoke();
+            }
         }
 
         private void Fire_canceled(InputAction.CallbackContext context)
         {
             OnFireReleased?.Invoke();
+            shouldFire = false;
         }
 
         private void Fire_started(InputAction.CallbackContext context)
         {
             OnFireStarted?.Invoke();
+            shouldFire = true;
         }
 
-        private void Fire_Performed(InputAction.CallbackContext context)
-        {
-            OnFirePerformed?.Invoke();
-        }
+        
 
         private void Brakes_canceled(InputAction.CallbackContext obj)
         {

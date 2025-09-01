@@ -18,7 +18,7 @@ namespace Game.Gameplay.Weapons
         [SerializeField] private Transform firePoint;
         [SerializeField] private ProjectileBullet bulletPrefab;
         [Min(50)]
-        [SerializeField] private int maxBulletCount = 100;
+        [SerializeField] private int initialBulletCount = 100;
 
         private ObjectPool<ProjectileBullet> bulletPool;
 
@@ -65,7 +65,7 @@ namespace Game.Gameplay.Weapons
                                                           OnGetBullet, 
                                                           OnReturnBullet, 
                                                           OnDestroyBullet, 
-                                                          maxBulletCount);
+                                                          initialBulletCount, true);
         }
     }
 }
