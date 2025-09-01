@@ -109,7 +109,6 @@ namespace Game.Gameplay.EnemyManagement
                 {
                     this.enemy.UnapplyBrakes();
                     Vector3 currentWaypoint = this.path.corners[pathIndex];
-                    Debug.DrawLine(this.enemy.transform.position, currentWaypoint, Color.red);
                     Utility.DrawPath(path, Color.red);
                     float waypointCheckDistanceSqr = this.enemy.WaypointCheckDistance * this.enemy.WaypointCheckDistance;
                     if (Vector3.SqrMagnitude(currentWaypoint - this.enemy.transform.position) > waypointCheckDistanceSqr)

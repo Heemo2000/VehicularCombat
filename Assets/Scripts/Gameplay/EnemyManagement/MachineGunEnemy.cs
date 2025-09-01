@@ -5,6 +5,7 @@ using UnityEditor;
 #endif
 using Game.StateMachineHandling;
 using Game.Core;
+using Game.Gameplay.Weapons;
 
 namespace Game.Gameplay.EnemyManagement
 {
@@ -28,18 +29,23 @@ namespace Game.Gameplay.EnemyManagement
         [SerializeField] private float chaseSpeed = 20.0f;
         [Min(0.01f)]
         [SerializeField] private float retreatSpeed = 30.0f;
-        [Min(0.0f)]
+        [Min(0.01f)]
         [SerializeField] private float retreatCooldownTime = 10.0f;
 
-        
+        [Min(0.01f)]
         [SerializeField] private float minHealth = 25.0f;
         [Min(0.01f)]
         [SerializeField] private float updateWaypointsTime = 1.0f;
+        [SerializeField] private Transform[] retreatPoints;
 
         [Header("Driving Settings: ")]
         [Min(0.01f)]
         [SerializeField] private float waypointCheckDistance = 5.0f;
         [SerializeField] private PointFollower pointFollower;
+
+        [Header("Weapon Settings: ")]
+        [SerializeField] private AimHandler aimHandler;
+        [SerializeField] private Weapon weapon;
 
         public float MinPatrolTime { get => minPatrolTime; }
         public float MaxPatrolTime { get => maxPatrolTime; }
@@ -53,7 +59,9 @@ namespace Game.Gameplay.EnemyManagement
         public float RetreatSpeed { get => retreatSpeed; }
         public float RetreatCooldownTime { get => retreatCooldownTime; }
         public float UpdateWaypointsTime { get => updateWaypointsTime;}
-
+        public AimHandler AimHandler { get => aimHandler;}
+        public Weapon Weapon { get => weapon;}
+        public Transform[] RetreatPoints { get => retreatPoints;}
 
         private Vehicle vehicle;
         private Health health;

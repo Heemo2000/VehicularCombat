@@ -329,13 +329,13 @@ MonoBehaviour:
   linearDamp: 5
   angularDamp: 5
   dampingTime: 0.1
-  mass: 1000
+  mass: 300
   detectGroundLayerMask:
     serializedVersion: 2
     m_Bits: 65
   springStrength: 10000
   damperStrength: 1000
-  interpolatedInput: 1
+  interpolatedInput: 0
   steeringInputTime: 1
   accelerateInputTime: 1
   gravity: 15
@@ -425,8 +425,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  forwardSpeed: 50
-  reverseSpeed: 60
+  forwardSpeed: 40
+  reverseSpeed: 50
   brakingTorque: 4000
   turnRadius: 3
   antiRollbarEnabled: 0
@@ -583,13 +583,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f0a1d42121b1042937a3b580d3d0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 50
-  firePoint: {fileID: 0}
+  fireInterval: 0.1
+  firePoints: []
+  bulletPrefab: {fileID: 0}
+  maxBulletsCount: 500
   barrel: {fileID: 4172964607442279927}
   maxBarrelRotationSpeed: 2000
   barrelBuildupSpeed: 250
   barrelRecoilSpeed: 150
   barrelRecoilDistance: 0.2
+  OnFireDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &474905004877443405
 GameObject:
   m_ObjectHideFlags: 0

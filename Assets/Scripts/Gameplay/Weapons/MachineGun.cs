@@ -1,14 +1,18 @@
+using Game.ObjectPoolHandling;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Gameplay.Weapons
 {
     public class MachineGun : Weapon
     {
         [Header("Main Settings: ")]
-        [Min(5)]
-        [SerializeField] private int fireRate = 50;
-        [SerializeField] private Transform firePoint;
-
+        [Min(0.01f)]
+        [SerializeField] private float fireInterval = 1.0f;
+        [SerializeField] private Transform[] firePoints;
+        [SerializeField] private LinearBullet bulletPrefab;
+        [Min(100)]
+        [SerializeField] private int maxBulletsCount = 500;
         [Header("Barrel Settings: ")]
         [SerializeField] private Transform barrel;
         [Min(0.1f)]
@@ -26,6 +30,9 @@ namespace Game.Gameplay.Weapons
         private float targetBarrelSpeed = 0.0f;
         private Vector3 originalBarrelPosition = Vector3.zero;
         private float recoilDelta = 1.0f;
+        private ObjectPool<LinearBullet> bulletPool;
+
+        public UnityEvent OnFireDone;
         public void MakeBarrelRoll()
         {
             shouldRotateBarrel = true;
@@ -50,13 +57,60 @@ namespace Game.Gameplay.Weapons
         {
             if(nextFireTime < Time.time)
             {
-                nextFireTime = Time.time + 1.0f/(float)fireRate;
+                foreach(var firePoint in firePoints)
+                {
+                    var bullet = bulletPool.Get();
+                    bullet.BulletPool = bulletPool;
+                    bullet.transform.position = firePoint.position;
+                    bullet.transform.forward = firePoint.forward;
+                }
+
+                OnFireDone?.Invoke();
+                nextFireTime = Time.time + fireInterval;
             }
+        }
+
+        private LinearBullet CreateBullet()
+        {
+            LinearBullet bullet = Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity);
+            bullet.transform.parent = transform;
+            bullet.gameObject.SetActive(false);
+            return bullet;
+        }
+
+        private void OnGetBullet(LinearBullet bullet)
+        {
+            bullet.gameObject.SetActive(true);
+        }
+
+        private void OnReturnBullet(LinearBullet bullet)
+        {
+            bullet.gameObject.SetActive(false);
+        }
+
+        private void OnDestroyBullet(LinearBullet bullet)
+        {
+            Destroy(bullet.gameObject);
         }
 
         private void Awake()
         {
-            originalBarrelPosition = barrel.localPosition;
+            if(barrel != null)
+            {
+                originalBarrelPosition = barrel.localPosition;
+            }
+        }
+
+        private void Start()
+        {
+            if(bulletPool == null)
+            {
+                bulletPool = new ObjectPool<LinearBullet>(CreateBullet, 
+                                                          OnGetBullet, 
+                                                          OnReturnBullet, 
+                                                          OnDestroyBullet, 
+                                                          maxBulletsCount);
+            }
         }
 
         private void LateUpdate()
@@ -85,7 +139,7 @@ namespace Game.Gameplay.Weapons
             }
             else
             {
-                recoilDelta = 1.0f;
+                recoilDelta = Mathf.Lerp(recoilDelta, 1.0f, barrelBuildupSpeed * Time.deltaTime);
             }
 
             barrel.localPosition = Vector3.Lerp(originalBarrelPosition - Vector3.forward * barrelRecoilDistance,

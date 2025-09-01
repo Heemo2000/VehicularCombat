@@ -5,12 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenuScene.unity
     guid: fb92c80a39811be40a9548c8fbf08e02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Arena.unity
+    guid: a2896a415a1811240b4f3cee508c490d
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 20e64a9d97c22c44091f67281e126387, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: aa2181de6376e0945886038ac1818d2b, type: 2}

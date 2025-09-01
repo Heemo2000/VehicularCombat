@@ -79,6 +79,14 @@ namespace Game.Core
             float sqrDistance = Vector3.SqrMagnitude(end - start);
             return sqrDistance <= distance * distance;
         }
+         
+        public static Vector3 CalculateProjectilePosition(Vector3 startPosition, Vector3 startVelocity, float gravity,float time)
+        {
+            Vector3 result = startPosition + time * startVelocity;
+            result.y = startPosition.y + startVelocity.y * time - (gravity / 2.0f * time * time);
+
+            return result;
+        }
     }
 
 }

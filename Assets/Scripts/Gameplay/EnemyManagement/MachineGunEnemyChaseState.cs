@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using Game.Core;
+using Game.Gameplay.Weapons;
 
 namespace Game.Gameplay.EnemyManagement
 {
@@ -12,10 +13,11 @@ namespace Game.Gameplay.EnemyManagement
         private Coroutine updateWaypointsCoroutine;
         private NavMeshPath path;
         private int currentWaypointIndex = -1;
-
+        private AimHandler aimHandler;
         public MachineGunEnemyChaseState(MachineGunEnemy enemy)
         {
             this.enemy = enemy;
+            this.aimHandler = enemy.AimHandler;
             path = new NavMeshPath();
         }
 
@@ -45,6 +47,10 @@ namespace Game.Gameplay.EnemyManagement
             }
 
             this.enemy.GoToPoint(this.path.corners[currentWaypointIndex]);
+            if(this.aimHandler != null)
+            {
+                this.aimHandler.AimPosition = this.enemy.Target.position;
+            }
         }
 
         public void OnFixedUpdate()
