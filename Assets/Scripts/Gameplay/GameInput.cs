@@ -3,16 +3,19 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Game.Input;
 using Game.Core;
+using System;
 
 namespace Game.Gameplay
 {
     public class GameInput : MonoBehaviour
     {
         [SerializeField] private RectTransform joystickOuter;
-        [SerializeField] private bool forceJoystick = false;
+        [SerializeField] private bool simulateAndroid = false;
         private GameControls controls;
         private bool brakeApplied = false;
         private bool shouldFire = false;
+        public UnityEvent OnWebInitialize;
+        public UnityEvent OnMobileInitialize;
         public UnityEvent OnFireStarted;
         public UnityEvent OnFirePerformed;
         public UnityEvent OnFireReleased;
@@ -21,13 +24,13 @@ namespace Game.Gameplay
 
         public Vector2 GetPointerPosition()
         {
-            if(Mouse.current != null && !forceJoystick)
+            if(Utility.IsEditor() || Application.platform == RuntimePlatform.WebGLPlayer || !simulateAndroid)
             {
-                return controls.Player.AimPosition.ReadValue<Vector2>();
+                return controls.Web.AimPosition.ReadValue<Vector2>();
             }
 
             Vector2 start = joystickOuter.position;
-            Vector2 end = controls.Player.AimPosition.ReadValue<Vector2>();
+            Vector2 end = controls.Mobile.AimAndShoot.ReadValue<Vector2>();
 
             Vector2 direction = (end - start).normalized;
             Vector2 centre = new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);
@@ -37,7 +40,12 @@ namespace Game.Gameplay
 
         public Vector2 GetMoveInput()
         {
-            return controls.Player.Move.ReadValue<Vector2>();
+            if(Utility.IsEditor() || Application.platform == RuntimePlatform.WebGLPlayer || !simulateAndroid)
+            {
+                return controls.Web.Move.ReadValue<Vector2>();
+            }
+
+            return controls.Mobile.Move.ReadValue<Vector2>();
         }
 
         private void Awake()
@@ -49,10 +57,34 @@ namespace Game.Gameplay
         void Start()
         {
             controls.Enable();
-            controls.Player.Brakes.started += Brakes_started;
-            controls.Player.Brakes.canceled += Brakes_canceled;
-            controls.Player.Fire.started += Fire_started;
-            controls.Player.Fire.canceled += Fire_canceled;
+            if (Utility.IsEditor() || Application.platform == RuntimePlatform.WebGLPlayer || !simulateAndroid)
+            {
+                controls.Web.Enable();
+                controls.Web.Fire.started += Fire_started;
+                controls.Web.Fire.canceled += Fire_canceled;
+                controls.Web.PreviousCommonAbility.started += PreviousCommonAbility_started;
+                controls.Web.NextCommonAbility.started += NextCommonAbility_started;
+                OnWebInitialize?.Invoke();
+            }
+            else if(Application.platform == RuntimePlatform.Android)
+            {
+                controls.Mobile.Enable();
+                controls.Mobile.AimAndShoot.started += Fire_started;
+                controls.Mobile.AimAndShoot.canceled += Fire_canceled;
+                controls.Mobile.PreviousCommonAbility.started += PreviousCommonAbility_started;
+                controls.Mobile.NextCommonAbility.started += NextCommonAbility_started;
+                OnMobileInitialize?.Invoke();
+            }
+        }
+
+        private void NextCommonAbility_started(InputAction.CallbackContext context)
+        {
+            
+        }
+
+        private void PreviousCommonAbility_started(InputAction.CallbackContext context)
+        {
+            
         }
 
         private void Update()
@@ -73,18 +105,6 @@ namespace Game.Gameplay
         {
             OnFireStarted?.Invoke();
             shouldFire = true;
-        }
-
-        
-
-        private void Brakes_canceled(InputAction.CallbackContext obj)
-        {
-            brakeApplied = false;
-        }
-
-        private void Brakes_started(InputAction.CallbackContext obj)
-        {
-            brakeApplied = true;
         }
 
         private void OnDestroy()

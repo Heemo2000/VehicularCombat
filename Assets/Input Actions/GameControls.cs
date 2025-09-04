@@ -128,6 +128,33 @@ namespace Game.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PreviousCommonAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""b78e6a2e-feeb-409e-8665-1a1d23c08760"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextCommonAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""951e2021-c33c-4e08-a45b-57078bb08d45"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d75bdf6-6462-4858-bf29-369b4de2e957"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -251,6 +278,341 @@ namespace Game.Input
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa0f76b3-faa0-4241-b162-8f757c250edb"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextCommonAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4590f7b5-f288-4abe-961b-f0baba85d6d1"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextCommonAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f466542-f62a-47cf-9869-aee653b1e42c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousCommonAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b96247cd-cdb5-4e37-8409-4f78766ccace"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousCommonAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd2e3e80-98c2-4092-b660-f9e6f9a1699d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Web"",
+            ""id"": ""f71095c7-a35f-486f-9b74-8145220da99d"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""b6627b4d-e04f-452b-8609-afa68076795d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AimPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""14e4bb8d-4fe3-4f2a-9393-104ff4a439d5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""fbf51dbf-7599-43e3-8438-77bfb56119ed"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PreviousCommonAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""97fef136-f6af-4812-8cd9-a768da5f0042"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextCommonAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""4595d21a-009b-4f89-8800-b683063d655e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""407f58eb-aedd-4b6c-acf9-09a0f332ba3e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ab2263b6-2bfe-49d7-adc8-55639d84ff6d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e774b8b8-226e-4e2c-9549-66cfc90e892c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousCommonAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0374b807-d235-483a-8a45-626ece78d85a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextCommonAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""cae14f9a-5c54-4082-a51d-dafadb3f41a4"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""f587be39-d226-4de6-96c3-09574c82ec1d"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f659efa6-1b14-452f-914b-6c4a5cc88a19"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""513b23d4-395b-4d35-9e94-6f9fc2a065be"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""864fb477-7e76-46db-a5a9-a37ef4aa925e"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e23a31e-bfb5-4bc9-bf11-a2bf0664cfd7"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""438ac57e-44b8-4804-8496-83951c78e908"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Mobile"",
+            ""id"": ""2cd611a8-d4d1-4157-8624-d098db69b7a4"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""3d2dfe02-843b-4d9d-98dd-74e45f1c6cbf"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AimAndShoot"",
+                    ""type"": ""Value"",
+                    ""id"": ""15cfae84-6d8d-4bfd-8cd8-d809c1cb02fe"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PreviousCommonAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7bbb1b7-1866-4793-967d-535dae89d2a2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextCommonAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""378f47a3-768a-4912-a81b-68258c1c9f6f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialAbilityToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""5fb06b99-d397-45f7-be21-07f9b50832a0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""17a5c3de-6eef-45b8-8700-648a02e0111c"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d26d9642-fa41-4db7-9aba-a12279ba3dea"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextCommonAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9d2b76a0-197a-49e9-9ddf-bcbc42743ecc"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousCommonAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0e18174-7de2-4147-b839-40e911a005ee"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimAndShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47c0fa68-bd6f-4ba7-8094-d2611e18e045"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialAbilityToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,11 +625,31 @@ namespace Game.Input
             m_Player_Brakes = m_Player.FindAction("Brakes", throwIfNotFound: true);
             m_Player_AimPosition = m_Player.FindAction("AimPosition", throwIfNotFound: true);
             m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+            m_Player_PreviousCommonAbility = m_Player.FindAction("PreviousCommonAbility", throwIfNotFound: true);
+            m_Player_NextCommonAbility = m_Player.FindAction("NextCommonAbility", throwIfNotFound: true);
+            m_Player_SpecialAbility = m_Player.FindAction("SpecialAbility", throwIfNotFound: true);
+            // Web
+            m_Web = asset.FindActionMap("Web", throwIfNotFound: true);
+            m_Web_Move = m_Web.FindAction("Move", throwIfNotFound: true);
+            m_Web_AimPosition = m_Web.FindAction("AimPosition", throwIfNotFound: true);
+            m_Web_Fire = m_Web.FindAction("Fire", throwIfNotFound: true);
+            m_Web_PreviousCommonAbility = m_Web.FindAction("PreviousCommonAbility", throwIfNotFound: true);
+            m_Web_NextCommonAbility = m_Web.FindAction("NextCommonAbility", throwIfNotFound: true);
+            m_Web_SpecialAbility = m_Web.FindAction("SpecialAbility", throwIfNotFound: true);
+            // Mobile
+            m_Mobile = asset.FindActionMap("Mobile", throwIfNotFound: true);
+            m_Mobile_Move = m_Mobile.FindAction("Move", throwIfNotFound: true);
+            m_Mobile_AimAndShoot = m_Mobile.FindAction("AimAndShoot", throwIfNotFound: true);
+            m_Mobile_PreviousCommonAbility = m_Mobile.FindAction("PreviousCommonAbility", throwIfNotFound: true);
+            m_Mobile_NextCommonAbility = m_Mobile.FindAction("NextCommonAbility", throwIfNotFound: true);
+            m_Mobile_SpecialAbilityToggle = m_Mobile.FindAction("SpecialAbilityToggle", throwIfNotFound: true);
         }
 
         ~@GameControls()
         {
             UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, GameControls.Player.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_Web.enabled, "This will cause a leak and performance issues, GameControls.Web.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_Mobile.enabled, "This will cause a leak and performance issues, GameControls.Mobile.Disable() has not been called.");
         }
 
         /// <summary>
@@ -347,6 +729,9 @@ namespace Game.Input
         private readonly InputAction m_Player_Brakes;
         private readonly InputAction m_Player_AimPosition;
         private readonly InputAction m_Player_Fire;
+        private readonly InputAction m_Player_PreviousCommonAbility;
+        private readonly InputAction m_Player_NextCommonAbility;
+        private readonly InputAction m_Player_SpecialAbility;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -374,6 +759,18 @@ namespace Game.Input
             /// Provides access to the underlying input action "Player/Fire".
             /// </summary>
             public InputAction @Fire => m_Wrapper.m_Player_Fire;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/PreviousCommonAbility".
+            /// </summary>
+            public InputAction @PreviousCommonAbility => m_Wrapper.m_Player_PreviousCommonAbility;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/NextCommonAbility".
+            /// </summary>
+            public InputAction @NextCommonAbility => m_Wrapper.m_Player_NextCommonAbility;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/SpecialAbility".
+            /// </summary>
+            public InputAction @SpecialAbility => m_Wrapper.m_Player_SpecialAbility;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -412,6 +809,15 @@ namespace Game.Input
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @PreviousCommonAbility.started += instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.performed += instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.canceled += instance.OnPreviousCommonAbility;
+                @NextCommonAbility.started += instance.OnNextCommonAbility;
+                @NextCommonAbility.performed += instance.OnNextCommonAbility;
+                @NextCommonAbility.canceled += instance.OnNextCommonAbility;
+                @SpecialAbility.started += instance.OnSpecialAbility;
+                @SpecialAbility.performed += instance.OnSpecialAbility;
+                @SpecialAbility.canceled += instance.OnSpecialAbility;
             }
 
             /// <summary>
@@ -435,6 +841,15 @@ namespace Game.Input
                 @Fire.started -= instance.OnFire;
                 @Fire.performed -= instance.OnFire;
                 @Fire.canceled -= instance.OnFire;
+                @PreviousCommonAbility.started -= instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.performed -= instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.canceled -= instance.OnPreviousCommonAbility;
+                @NextCommonAbility.started -= instance.OnNextCommonAbility;
+                @NextCommonAbility.performed -= instance.OnNextCommonAbility;
+                @NextCommonAbility.canceled -= instance.OnNextCommonAbility;
+                @SpecialAbility.started -= instance.OnSpecialAbility;
+                @SpecialAbility.performed -= instance.OnSpecialAbility;
+                @SpecialAbility.canceled -= instance.OnSpecialAbility;
             }
 
             /// <summary>
@@ -468,6 +883,297 @@ namespace Game.Input
         /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
         /// </summary>
         public PlayerActions @Player => new PlayerActions(this);
+
+        // Web
+        private readonly InputActionMap m_Web;
+        private List<IWebActions> m_WebActionsCallbackInterfaces = new List<IWebActions>();
+        private readonly InputAction m_Web_Move;
+        private readonly InputAction m_Web_AimPosition;
+        private readonly InputAction m_Web_Fire;
+        private readonly InputAction m_Web_PreviousCommonAbility;
+        private readonly InputAction m_Web_NextCommonAbility;
+        private readonly InputAction m_Web_SpecialAbility;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "Web".
+        /// </summary>
+        public struct WebActions
+        {
+            private @GameControls m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public WebActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "Web/Move".
+            /// </summary>
+            public InputAction @Move => m_Wrapper.m_Web_Move;
+            /// <summary>
+            /// Provides access to the underlying input action "Web/AimPosition".
+            /// </summary>
+            public InputAction @AimPosition => m_Wrapper.m_Web_AimPosition;
+            /// <summary>
+            /// Provides access to the underlying input action "Web/Fire".
+            /// </summary>
+            public InputAction @Fire => m_Wrapper.m_Web_Fire;
+            /// <summary>
+            /// Provides access to the underlying input action "Web/PreviousCommonAbility".
+            /// </summary>
+            public InputAction @PreviousCommonAbility => m_Wrapper.m_Web_PreviousCommonAbility;
+            /// <summary>
+            /// Provides access to the underlying input action "Web/NextCommonAbility".
+            /// </summary>
+            public InputAction @NextCommonAbility => m_Wrapper.m_Web_NextCommonAbility;
+            /// <summary>
+            /// Provides access to the underlying input action "Web/SpecialAbility".
+            /// </summary>
+            public InputAction @SpecialAbility => m_Wrapper.m_Web_SpecialAbility;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_Web; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="WebActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(WebActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="WebActions" />
+            public void AddCallbacks(IWebActions instance)
+            {
+                if (instance == null || m_Wrapper.m_WebActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_WebActionsCallbackInterfaces.Add(instance);
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @AimPosition.started += instance.OnAimPosition;
+                @AimPosition.performed += instance.OnAimPosition;
+                @AimPosition.canceled += instance.OnAimPosition;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @PreviousCommonAbility.started += instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.performed += instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.canceled += instance.OnPreviousCommonAbility;
+                @NextCommonAbility.started += instance.OnNextCommonAbility;
+                @NextCommonAbility.performed += instance.OnNextCommonAbility;
+                @NextCommonAbility.canceled += instance.OnNextCommonAbility;
+                @SpecialAbility.started += instance.OnSpecialAbility;
+                @SpecialAbility.performed += instance.OnSpecialAbility;
+                @SpecialAbility.canceled += instance.OnSpecialAbility;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="WebActions" />
+            private void UnregisterCallbacks(IWebActions instance)
+            {
+                @Move.started -= instance.OnMove;
+                @Move.performed -= instance.OnMove;
+                @Move.canceled -= instance.OnMove;
+                @AimPosition.started -= instance.OnAimPosition;
+                @AimPosition.performed -= instance.OnAimPosition;
+                @AimPosition.canceled -= instance.OnAimPosition;
+                @Fire.started -= instance.OnFire;
+                @Fire.performed -= instance.OnFire;
+                @Fire.canceled -= instance.OnFire;
+                @PreviousCommonAbility.started -= instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.performed -= instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.canceled -= instance.OnPreviousCommonAbility;
+                @NextCommonAbility.started -= instance.OnNextCommonAbility;
+                @NextCommonAbility.performed -= instance.OnNextCommonAbility;
+                @NextCommonAbility.canceled -= instance.OnNextCommonAbility;
+                @SpecialAbility.started -= instance.OnSpecialAbility;
+                @SpecialAbility.performed -= instance.OnSpecialAbility;
+                @SpecialAbility.canceled -= instance.OnSpecialAbility;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="WebActions.UnregisterCallbacks(IWebActions)" />.
+            /// </summary>
+            /// <seealso cref="WebActions.UnregisterCallbacks(IWebActions)" />
+            public void RemoveCallbacks(IWebActions instance)
+            {
+                if (m_Wrapper.m_WebActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="WebActions.AddCallbacks(IWebActions)" />
+            /// <seealso cref="WebActions.RemoveCallbacks(IWebActions)" />
+            /// <seealso cref="WebActions.UnregisterCallbacks(IWebActions)" />
+            public void SetCallbacks(IWebActions instance)
+            {
+                foreach (var item in m_Wrapper.m_WebActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_WebActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="WebActions" /> instance referencing this action map.
+        /// </summary>
+        public WebActions @Web => new WebActions(this);
+
+        // Mobile
+        private readonly InputActionMap m_Mobile;
+        private List<IMobileActions> m_MobileActionsCallbackInterfaces = new List<IMobileActions>();
+        private readonly InputAction m_Mobile_Move;
+        private readonly InputAction m_Mobile_AimAndShoot;
+        private readonly InputAction m_Mobile_PreviousCommonAbility;
+        private readonly InputAction m_Mobile_NextCommonAbility;
+        private readonly InputAction m_Mobile_SpecialAbilityToggle;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "Mobile".
+        /// </summary>
+        public struct MobileActions
+        {
+            private @GameControls m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public MobileActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "Mobile/Move".
+            /// </summary>
+            public InputAction @Move => m_Wrapper.m_Mobile_Move;
+            /// <summary>
+            /// Provides access to the underlying input action "Mobile/AimAndShoot".
+            /// </summary>
+            public InputAction @AimAndShoot => m_Wrapper.m_Mobile_AimAndShoot;
+            /// <summary>
+            /// Provides access to the underlying input action "Mobile/PreviousCommonAbility".
+            /// </summary>
+            public InputAction @PreviousCommonAbility => m_Wrapper.m_Mobile_PreviousCommonAbility;
+            /// <summary>
+            /// Provides access to the underlying input action "Mobile/NextCommonAbility".
+            /// </summary>
+            public InputAction @NextCommonAbility => m_Wrapper.m_Mobile_NextCommonAbility;
+            /// <summary>
+            /// Provides access to the underlying input action "Mobile/SpecialAbilityToggle".
+            /// </summary>
+            public InputAction @SpecialAbilityToggle => m_Wrapper.m_Mobile_SpecialAbilityToggle;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_Mobile; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="MobileActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(MobileActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="MobileActions" />
+            public void AddCallbacks(IMobileActions instance)
+            {
+                if (instance == null || m_Wrapper.m_MobileActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_MobileActionsCallbackInterfaces.Add(instance);
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @AimAndShoot.started += instance.OnAimAndShoot;
+                @AimAndShoot.performed += instance.OnAimAndShoot;
+                @AimAndShoot.canceled += instance.OnAimAndShoot;
+                @PreviousCommonAbility.started += instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.performed += instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.canceled += instance.OnPreviousCommonAbility;
+                @NextCommonAbility.started += instance.OnNextCommonAbility;
+                @NextCommonAbility.performed += instance.OnNextCommonAbility;
+                @NextCommonAbility.canceled += instance.OnNextCommonAbility;
+                @SpecialAbilityToggle.started += instance.OnSpecialAbilityToggle;
+                @SpecialAbilityToggle.performed += instance.OnSpecialAbilityToggle;
+                @SpecialAbilityToggle.canceled += instance.OnSpecialAbilityToggle;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="MobileActions" />
+            private void UnregisterCallbacks(IMobileActions instance)
+            {
+                @Move.started -= instance.OnMove;
+                @Move.performed -= instance.OnMove;
+                @Move.canceled -= instance.OnMove;
+                @AimAndShoot.started -= instance.OnAimAndShoot;
+                @AimAndShoot.performed -= instance.OnAimAndShoot;
+                @AimAndShoot.canceled -= instance.OnAimAndShoot;
+                @PreviousCommonAbility.started -= instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.performed -= instance.OnPreviousCommonAbility;
+                @PreviousCommonAbility.canceled -= instance.OnPreviousCommonAbility;
+                @NextCommonAbility.started -= instance.OnNextCommonAbility;
+                @NextCommonAbility.performed -= instance.OnNextCommonAbility;
+                @NextCommonAbility.canceled -= instance.OnNextCommonAbility;
+                @SpecialAbilityToggle.started -= instance.OnSpecialAbilityToggle;
+                @SpecialAbilityToggle.performed -= instance.OnSpecialAbilityToggle;
+                @SpecialAbilityToggle.canceled -= instance.OnSpecialAbilityToggle;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MobileActions.UnregisterCallbacks(IMobileActions)" />.
+            /// </summary>
+            /// <seealso cref="MobileActions.UnregisterCallbacks(IMobileActions)" />
+            public void RemoveCallbacks(IMobileActions instance)
+            {
+                if (m_Wrapper.m_MobileActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="MobileActions.AddCallbacks(IMobileActions)" />
+            /// <seealso cref="MobileActions.RemoveCallbacks(IMobileActions)" />
+            /// <seealso cref="MobileActions.UnregisterCallbacks(IMobileActions)" />
+            public void SetCallbacks(IMobileActions instance)
+            {
+                foreach (var item in m_Wrapper.m_MobileActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_MobileActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="MobileActions" /> instance referencing this action map.
+        /// </summary>
+        public MobileActions @Mobile => new MobileActions(this);
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
         /// </summary>
@@ -503,6 +1209,120 @@ namespace Game.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnFire(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PreviousCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPreviousCommonAbility(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "NextCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnNextCommonAbility(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "SpecialAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpecialAbility(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Web" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="WebActions.AddCallbacks(IWebActions)" />
+        /// <seealso cref="WebActions.RemoveCallbacks(IWebActions)" />
+        public interface IWebActions
+        {
+            /// <summary>
+            /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnMove(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "AimPosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAimPosition(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnFire(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PreviousCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPreviousCommonAbility(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "NextCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnNextCommonAbility(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "SpecialAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpecialAbility(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Mobile" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="MobileActions.AddCallbacks(IMobileActions)" />
+        /// <seealso cref="MobileActions.RemoveCallbacks(IMobileActions)" />
+        public interface IMobileActions
+        {
+            /// <summary>
+            /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnMove(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "AimAndShoot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAimAndShoot(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PreviousCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPreviousCommonAbility(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "NextCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnNextCommonAbility(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "SpecialAbilityToggle" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpecialAbilityToggle(InputAction.CallbackContext context);
         }
     }
 }

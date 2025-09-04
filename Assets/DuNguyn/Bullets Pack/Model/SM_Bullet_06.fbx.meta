@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 1d6b543f2e01fce459084cd4bd0a1c89
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302702
+  packageName: Weapons Pack - Bullets
+  packageVersion: 0.0.1
+  assetPath: Assets/DuNguyn/Bullets Pack/Model/SM_Bullet_06.fbx
+  uploadId: 716450
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -16,8 +23,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -35,7 +40,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -90,7 +95,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.099999994
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -107,10 +112,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 302702
-  packageName: Weapons Pack - Bullets
-  packageVersion: 0.0.1
-  assetPath: Assets/DuNguyn/Bullets Pack/Model/SM_Bullet_06.fbx
-  uploadId: 716450
