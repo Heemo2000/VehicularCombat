@@ -22,7 +22,7 @@ namespace Game.Gameplay.EnemyManagement
 
         public void OnUpdate()
         {
-            this.aimHandler.AimPosition = this.enemy.Target.position;
+            //this.aimHandler.AimPosition = this.enemy.Target.position;
             this.weapon.Fire();
         }
 

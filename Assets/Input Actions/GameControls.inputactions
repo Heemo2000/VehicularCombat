@@ -262,7 +262,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "AimPosition",
+                    "name": "Aim",
                     "type": "Value",
                     "id": "14e4bb8d-4fe3-4f2a-9393-104ff4a439d5",
                     "expectedControlType": "Vector2",
@@ -280,7 +280,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PreviousCommonAbility",
+                    "name": "CommonAbility",
                     "type": "Button",
                     "id": "97fef136-f6af-4812-8cd9-a768da5f0042",
                     "expectedControlType": "",
@@ -289,18 +289,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "NextCommonAbility",
-                    "type": "Button",
-                    "id": "4595d21a-009b-4f89-8800-b683063d655e",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "SpecialAbility",
                     "type": "Button",
-                    "id": "407f58eb-aedd-4b6c-acf9-09a0f332ba3e",
+                    "id": "4595d21a-009b-4f89-8800-b683063d655e",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -310,23 +301,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "ab2263b6-2bfe-49d7-adc8-55639d84ff6d",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SpecialAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "e774b8b8-226e-4e2c-9549-66cfc90e892c",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PreviousCommonAbility",
+                    "action": "CommonAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -337,7 +317,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NextCommonAbility",
+                    "action": "SpecialAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -399,11 +379,11 @@
                 {
                     "name": "",
                     "id": "6e23a31e-bfb5-4bc9-bf11-a2bf0664cfd7",
-                    "path": "<Mouse>/position",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AimPosition",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -443,7 +423,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PreviousCommonAbility",
+                    "name": "CommonAbility",
                     "type": "Button",
                     "id": "c7bbb1b7-1866-4793-967d-535dae89d2a2",
                     "expectedControlType": "",
@@ -452,18 +432,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "NextCommonAbility",
+                    "name": "SpecialAbility",
                     "type": "Button",
                     "id": "378f47a3-768a-4912-a81b-68258c1c9f6f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SpecialAbilityToggle",
-                    "type": "Button",
-                    "id": "5fb06b99-d397-45f7-be21-07f9b50832a0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -489,7 +460,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NextCommonAbility",
+                    "action": "SpecialAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -500,7 +471,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PreviousCommonAbility",
+                    "action": "CommonAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -512,17 +483,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "AimAndShoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "47c0fa68-bd6f-4ba7-8094-d2611e18e045",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SpecialAbilityToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

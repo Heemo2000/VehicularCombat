@@ -88,11 +88,7 @@ namespace Game.Core
             return result;
         }
 
-        public static float CalculateProjectileAngle(float range, float gravity, float initialSpeed)
-        {
-            return 0.5f * Mathf.Asin(range * gravity / (initialSpeed * initialSpeed));
-        }
-
+        
         public static bool IsEditor()
         {
             RuntimePlatform platform = Application.platform;

@@ -7,33 +7,49 @@ namespace Game.Gameplay.AbilityManagement
     [System.Serializable]
     public class GrenadeAbility : Ability
     {
+        public GameObject originalWeaponMesh;
+        public GameObject targetWeaponMesh;
         public ProjectileGun projectileGun;
+        public WeaponManager weaponManager;
         public AimHandler aimHandler;
         public LineRenderer lineRenderer;
+        public AnimationCurve lineWidthCurve;
         public LayerMask collisionLayerMask;
+        
         [Range(10, 500)]
         public int linePoints = 25;
         [Range(0.01f, 0.3f)]
         public float timeBetweenPoints = 0.1f;
+
         public override void Execute()
         {
-            projectileGun.Fire();
+            weaponManager.Fire();
         }
 
-        public override void OnAim(Vector3 aimPosition)
+        public override void OnAim(Vector2 aimInput)
         {
-            aimHandler.AimPosition = aimPosition;
+            aimHandler.XInput = aimInput.y;
+            aimHandler.YInput = aimInput.x;
             DrawProjection();
         }
 
         public override void OnEquip()
         {
+            originalWeaponMesh.SetActive(false);
+            targetWeaponMesh.SetActive(true);
             lineRenderer.enabled = true;
+            aimHandler.AllowXRotation = true;
+            lineRenderer.widthCurve = lineWidthCurve;
+            weaponManager.Activate(projectileGun);
         }
 
         public override void OnWithHold()
         {
             lineRenderer.enabled = false;
+            aimHandler.AllowXRotation = false;
+            originalWeaponMesh.SetActive(true);
+            targetWeaponMesh.SetActive(false);
+            weaponManager.Activate(WeaponType.Linear);
         }
 
         private void DrawProjection()

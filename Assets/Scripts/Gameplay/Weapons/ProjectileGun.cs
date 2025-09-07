@@ -73,5 +73,20 @@ namespace Game.Gameplay.Weapons
                                                           OnDestroyBullet, 
                                                           initialBulletCount, true);
         }
+
+        public override WeaponType GetWeaponType()
+        {
+            return WeaponType.Projectile;
+        }
+
+        public override void Activate()
+        {
+            
+        }
+
+        public override void Deactivate()
+        {
+            
+        }
     }
 }

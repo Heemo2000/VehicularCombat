@@ -19,23 +19,23 @@ namespace Game.Gameplay
         public UnityEvent OnFireStarted;
         public UnityEvent OnFirePerformed;
         public UnityEvent OnFireReleased;
+        public UnityEvent OnCommonAbilityToggle;
+        public UnityEvent OnSpecialAbilityToggle;
 
         public bool BrakeApplied { get => brakeApplied;}
-
-        public Vector2 GetPointerPosition()
+        public Vector2 GetRotateInput()
         {
+            Vector2 finalPosition = Vector2.zero;
             if(Utility.IsEditor() || Application.platform == RuntimePlatform.WebGLPlayer || !simulateAndroid)
             {
-                return controls.Web.AimPosition.ReadValue<Vector2>();
+                finalPosition = controls.Web.Aim.ReadValue<Vector2>();
+            }
+            else
+            {
+                finalPosition = controls.Mobile.AimAndShoot.ReadValue<Vector2>();
             }
 
-            Vector2 start = joystickOuter.position;
-            Vector2 end = controls.Mobile.AimAndShoot.ReadValue<Vector2>();
-
-            Vector2 direction = (end - start).normalized;
-            Vector2 centre = new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);
-
-            return centre + direction * Constants.DISTANCE_FROM_SCREEN_CENTRE;
+            return finalPosition.normalized;
         }
 
         public Vector2 GetMoveInput()
@@ -56,14 +56,15 @@ namespace Game.Gameplay
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            Debug.Log("Current Platform: " + Application.platform);
             controls.Enable();
             if (Utility.IsEditor() || Application.platform == RuntimePlatform.WebGLPlayer || !simulateAndroid)
             {
                 controls.Web.Enable();
                 controls.Web.Fire.started += Fire_started;
                 controls.Web.Fire.canceled += Fire_canceled;
-                controls.Web.PreviousCommonAbility.started += PreviousCommonAbility_started;
-                controls.Web.NextCommonAbility.started += NextCommonAbility_started;
+                controls.Web.CommonAbility.started += CommonAbility_started;
+                controls.Web.SpecialAbility.started += SpecialAbility_started;
                 OnWebInitialize?.Invoke();
             }
             else if(Application.platform == RuntimePlatform.Android)
@@ -71,20 +72,20 @@ namespace Game.Gameplay
                 controls.Mobile.Enable();
                 controls.Mobile.AimAndShoot.started += Fire_started;
                 controls.Mobile.AimAndShoot.canceled += Fire_canceled;
-                controls.Mobile.PreviousCommonAbility.started += PreviousCommonAbility_started;
-                controls.Mobile.NextCommonAbility.started += NextCommonAbility_started;
+                controls.Mobile.CommonAbility.started += CommonAbility_started;
+                controls.Mobile.SpecialAbility.started += SpecialAbility_started;
                 OnMobileInitialize?.Invoke();
             }
         }
 
-        private void NextCommonAbility_started(InputAction.CallbackContext context)
+        private void CommonAbility_started(InputAction.CallbackContext context)
         {
-            
+            OnCommonAbilityToggle?.Invoke();
         }
 
-        private void PreviousCommonAbility_started(InputAction.CallbackContext context)
+        private void SpecialAbility_started(InputAction.CallbackContext context)
         {
-            
+            OnSpecialAbilityToggle?.Invoke();
         }
 
         private void Update()

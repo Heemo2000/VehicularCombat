@@ -1,32 +1,33 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Game.Gameplay
 {
     public class AimHandler : MonoBehaviour
     {
-        [Min(0.01f)]
-        [SerializeField] private float rotationSpeed = 20f; // degrees per second
-        private Vector3 aimPosition = Vector3.zero;
+        [SerializeField] private Vector2 rotationSpeed = new Vector2(10.0f, 10.0f); // degrees per second
+        [SerializeField] private bool allowXRotation;
+        [SerializeField] private Transform xAxisRotator;
+        [SerializeField] private float minAngle = -90.0f;
+        [SerializeField] private float maxAngle = 90.0f;
 
-        public Vector3 AimPosition { get => aimPosition; set => aimPosition = value; }
+        private float xInput = 0.0f;
+        private float yInput = 0.0f;
 
-        void Update()
+        private float currentXAngle = 0.0f;
+        private float currentYAngle = 0.0f;
+
+        public bool AllowXRotation { get => allowXRotation; set => allowXRotation = value; }
+        public float XInput { get => xInput; set => xInput = value; }
+
+        public float YInput { get => yInput; set => yInput = value; }
+        void LateUpdate()
         {
-            // Ensure aiming only in the XZ plane
-            Vector3 targetPosition = new Vector3(aimPosition.x, transform.position.y, aimPosition.z);
-            Vector3 direction = targetPosition - transform.position;
-
-            // Prevent zero direction errors
-            if (direction.sqrMagnitude > 0.001f)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-                transform.rotation = Quaternion.RotateTowards(
-                    transform.rotation,
-                    targetRotation,
-                    rotationSpeed * Time.deltaTime
-                );
-            }
+            currentXAngle = (allowXRotation == true) ? currentXAngle + xInput * rotationSpeed.x : 0.0f;
+            currentXAngle = Mathf.Clamp(currentXAngle, minAngle, maxAngle);
+            currentYAngle += yInput * rotationSpeed.y;
+            
+            transform.localRotation = Quaternion.Euler(0.0f, currentYAngle, 0.0f);
+            xAxisRotator.localRotation = Quaternion.Euler(currentXAngle, 0.0f, 0.0f);
         }
     }
 }

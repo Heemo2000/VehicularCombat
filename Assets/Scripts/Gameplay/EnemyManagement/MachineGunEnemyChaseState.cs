@@ -49,7 +49,7 @@ namespace Game.Gameplay.EnemyManagement
             this.enemy.GoToPoint(this.path.corners[currentWaypointIndex]);
             if(this.aimHandler != null)
             {
-                this.aimHandler.AimPosition = this.enemy.Target.position;
+                //this.aimHandler.AimPosition = this.enemy.Target.position;
             }
         }
 

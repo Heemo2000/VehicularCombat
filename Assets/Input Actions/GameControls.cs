@@ -350,7 +350,7 @@ namespace Game.Input
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""AimPosition"",
+                    ""name"": ""Aim"",
                     ""type"": ""Value"",
                     ""id"": ""14e4bb8d-4fe3-4f2a-9393-104ff4a439d5"",
                     ""expectedControlType"": ""Vector2"",
@@ -368,7 +368,7 @@ namespace Game.Input
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PreviousCommonAbility"",
+                    ""name"": ""CommonAbility"",
                     ""type"": ""Button"",
                     ""id"": ""97fef136-f6af-4812-8cd9-a768da5f0042"",
                     ""expectedControlType"": """",
@@ -377,18 +377,9 @@ namespace Game.Input
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""NextCommonAbility"",
-                    ""type"": ""Button"",
-                    ""id"": ""4595d21a-009b-4f89-8800-b683063d655e"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SpecialAbility"",
                     ""type"": ""Button"",
-                    ""id"": ""407f58eb-aedd-4b6c-acf9-09a0f332ba3e"",
+                    ""id"": ""4595d21a-009b-4f89-8800-b683063d655e"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -398,23 +389,12 @@ namespace Game.Input
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""ab2263b6-2bfe-49d7-adc8-55639d84ff6d"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpecialAbility"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""e774b8b8-226e-4e2c-9549-66cfc90e892c"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PreviousCommonAbility"",
+                    ""action"": ""CommonAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -425,7 +405,7 @@ namespace Game.Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NextCommonAbility"",
+                    ""action"": ""SpecialAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -487,11 +467,11 @@ namespace Game.Input
                 {
                     ""name"": """",
                     ""id"": ""6e23a31e-bfb5-4bc9-bf11-a2bf0664cfd7"",
-                    ""path"": ""<Mouse>/position"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AimPosition"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -531,7 +511,7 @@ namespace Game.Input
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PreviousCommonAbility"",
+                    ""name"": ""CommonAbility"",
                     ""type"": ""Button"",
                     ""id"": ""c7bbb1b7-1866-4793-967d-535dae89d2a2"",
                     ""expectedControlType"": """",
@@ -540,18 +520,9 @@ namespace Game.Input
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""NextCommonAbility"",
+                    ""name"": ""SpecialAbility"",
                     ""type"": ""Button"",
                     ""id"": ""378f47a3-768a-4912-a81b-68258c1c9f6f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SpecialAbilityToggle"",
-                    ""type"": ""Button"",
-                    ""id"": ""5fb06b99-d397-45f7-be21-07f9b50832a0"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -577,7 +548,7 @@ namespace Game.Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NextCommonAbility"",
+                    ""action"": ""SpecialAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -588,7 +559,7 @@ namespace Game.Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PreviousCommonAbility"",
+                    ""action"": ""CommonAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -600,17 +571,6 @@ namespace Game.Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""AimAndShoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""47c0fa68-bd6f-4ba7-8094-d2611e18e045"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpecialAbilityToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -631,18 +591,16 @@ namespace Game.Input
             // Web
             m_Web = asset.FindActionMap("Web", throwIfNotFound: true);
             m_Web_Move = m_Web.FindAction("Move", throwIfNotFound: true);
-            m_Web_AimPosition = m_Web.FindAction("AimPosition", throwIfNotFound: true);
+            m_Web_Aim = m_Web.FindAction("Aim", throwIfNotFound: true);
             m_Web_Fire = m_Web.FindAction("Fire", throwIfNotFound: true);
-            m_Web_PreviousCommonAbility = m_Web.FindAction("PreviousCommonAbility", throwIfNotFound: true);
-            m_Web_NextCommonAbility = m_Web.FindAction("NextCommonAbility", throwIfNotFound: true);
+            m_Web_CommonAbility = m_Web.FindAction("CommonAbility", throwIfNotFound: true);
             m_Web_SpecialAbility = m_Web.FindAction("SpecialAbility", throwIfNotFound: true);
             // Mobile
             m_Mobile = asset.FindActionMap("Mobile", throwIfNotFound: true);
             m_Mobile_Move = m_Mobile.FindAction("Move", throwIfNotFound: true);
             m_Mobile_AimAndShoot = m_Mobile.FindAction("AimAndShoot", throwIfNotFound: true);
-            m_Mobile_PreviousCommonAbility = m_Mobile.FindAction("PreviousCommonAbility", throwIfNotFound: true);
-            m_Mobile_NextCommonAbility = m_Mobile.FindAction("NextCommonAbility", throwIfNotFound: true);
-            m_Mobile_SpecialAbilityToggle = m_Mobile.FindAction("SpecialAbilityToggle", throwIfNotFound: true);
+            m_Mobile_CommonAbility = m_Mobile.FindAction("CommonAbility", throwIfNotFound: true);
+            m_Mobile_SpecialAbility = m_Mobile.FindAction("SpecialAbility", throwIfNotFound: true);
         }
 
         ~@GameControls()
@@ -888,10 +846,9 @@ namespace Game.Input
         private readonly InputActionMap m_Web;
         private List<IWebActions> m_WebActionsCallbackInterfaces = new List<IWebActions>();
         private readonly InputAction m_Web_Move;
-        private readonly InputAction m_Web_AimPosition;
+        private readonly InputAction m_Web_Aim;
         private readonly InputAction m_Web_Fire;
-        private readonly InputAction m_Web_PreviousCommonAbility;
-        private readonly InputAction m_Web_NextCommonAbility;
+        private readonly InputAction m_Web_CommonAbility;
         private readonly InputAction m_Web_SpecialAbility;
         /// <summary>
         /// Provides access to input actions defined in input action map "Web".
@@ -909,21 +866,17 @@ namespace Game.Input
             /// </summary>
             public InputAction @Move => m_Wrapper.m_Web_Move;
             /// <summary>
-            /// Provides access to the underlying input action "Web/AimPosition".
+            /// Provides access to the underlying input action "Web/Aim".
             /// </summary>
-            public InputAction @AimPosition => m_Wrapper.m_Web_AimPosition;
+            public InputAction @Aim => m_Wrapper.m_Web_Aim;
             /// <summary>
             /// Provides access to the underlying input action "Web/Fire".
             /// </summary>
             public InputAction @Fire => m_Wrapper.m_Web_Fire;
             /// <summary>
-            /// Provides access to the underlying input action "Web/PreviousCommonAbility".
+            /// Provides access to the underlying input action "Web/CommonAbility".
             /// </summary>
-            public InputAction @PreviousCommonAbility => m_Wrapper.m_Web_PreviousCommonAbility;
-            /// <summary>
-            /// Provides access to the underlying input action "Web/NextCommonAbility".
-            /// </summary>
-            public InputAction @NextCommonAbility => m_Wrapper.m_Web_NextCommonAbility;
+            public InputAction @CommonAbility => m_Wrapper.m_Web_CommonAbility;
             /// <summary>
             /// Provides access to the underlying input action "Web/SpecialAbility".
             /// </summary>
@@ -957,18 +910,15 @@ namespace Game.Input
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @AimPosition.started += instance.OnAimPosition;
-                @AimPosition.performed += instance.OnAimPosition;
-                @AimPosition.canceled += instance.OnAimPosition;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
-                @PreviousCommonAbility.started += instance.OnPreviousCommonAbility;
-                @PreviousCommonAbility.performed += instance.OnPreviousCommonAbility;
-                @PreviousCommonAbility.canceled += instance.OnPreviousCommonAbility;
-                @NextCommonAbility.started += instance.OnNextCommonAbility;
-                @NextCommonAbility.performed += instance.OnNextCommonAbility;
-                @NextCommonAbility.canceled += instance.OnNextCommonAbility;
+                @CommonAbility.started += instance.OnCommonAbility;
+                @CommonAbility.performed += instance.OnCommonAbility;
+                @CommonAbility.canceled += instance.OnCommonAbility;
                 @SpecialAbility.started += instance.OnSpecialAbility;
                 @SpecialAbility.performed += instance.OnSpecialAbility;
                 @SpecialAbility.canceled += instance.OnSpecialAbility;
@@ -986,18 +936,15 @@ namespace Game.Input
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
-                @AimPosition.started -= instance.OnAimPosition;
-                @AimPosition.performed -= instance.OnAimPosition;
-                @AimPosition.canceled -= instance.OnAimPosition;
+                @Aim.started -= instance.OnAim;
+                @Aim.performed -= instance.OnAim;
+                @Aim.canceled -= instance.OnAim;
                 @Fire.started -= instance.OnFire;
                 @Fire.performed -= instance.OnFire;
                 @Fire.canceled -= instance.OnFire;
-                @PreviousCommonAbility.started -= instance.OnPreviousCommonAbility;
-                @PreviousCommonAbility.performed -= instance.OnPreviousCommonAbility;
-                @PreviousCommonAbility.canceled -= instance.OnPreviousCommonAbility;
-                @NextCommonAbility.started -= instance.OnNextCommonAbility;
-                @NextCommonAbility.performed -= instance.OnNextCommonAbility;
-                @NextCommonAbility.canceled -= instance.OnNextCommonAbility;
+                @CommonAbility.started -= instance.OnCommonAbility;
+                @CommonAbility.performed -= instance.OnCommonAbility;
+                @CommonAbility.canceled -= instance.OnCommonAbility;
                 @SpecialAbility.started -= instance.OnSpecialAbility;
                 @SpecialAbility.performed -= instance.OnSpecialAbility;
                 @SpecialAbility.canceled -= instance.OnSpecialAbility;
@@ -1040,9 +987,8 @@ namespace Game.Input
         private List<IMobileActions> m_MobileActionsCallbackInterfaces = new List<IMobileActions>();
         private readonly InputAction m_Mobile_Move;
         private readonly InputAction m_Mobile_AimAndShoot;
-        private readonly InputAction m_Mobile_PreviousCommonAbility;
-        private readonly InputAction m_Mobile_NextCommonAbility;
-        private readonly InputAction m_Mobile_SpecialAbilityToggle;
+        private readonly InputAction m_Mobile_CommonAbility;
+        private readonly InputAction m_Mobile_SpecialAbility;
         /// <summary>
         /// Provides access to input actions defined in input action map "Mobile".
         /// </summary>
@@ -1063,17 +1009,13 @@ namespace Game.Input
             /// </summary>
             public InputAction @AimAndShoot => m_Wrapper.m_Mobile_AimAndShoot;
             /// <summary>
-            /// Provides access to the underlying input action "Mobile/PreviousCommonAbility".
+            /// Provides access to the underlying input action "Mobile/CommonAbility".
             /// </summary>
-            public InputAction @PreviousCommonAbility => m_Wrapper.m_Mobile_PreviousCommonAbility;
+            public InputAction @CommonAbility => m_Wrapper.m_Mobile_CommonAbility;
             /// <summary>
-            /// Provides access to the underlying input action "Mobile/NextCommonAbility".
+            /// Provides access to the underlying input action "Mobile/SpecialAbility".
             /// </summary>
-            public InputAction @NextCommonAbility => m_Wrapper.m_Mobile_NextCommonAbility;
-            /// <summary>
-            /// Provides access to the underlying input action "Mobile/SpecialAbilityToggle".
-            /// </summary>
-            public InputAction @SpecialAbilityToggle => m_Wrapper.m_Mobile_SpecialAbilityToggle;
+            public InputAction @SpecialAbility => m_Wrapper.m_Mobile_SpecialAbility;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1106,15 +1048,12 @@ namespace Game.Input
                 @AimAndShoot.started += instance.OnAimAndShoot;
                 @AimAndShoot.performed += instance.OnAimAndShoot;
                 @AimAndShoot.canceled += instance.OnAimAndShoot;
-                @PreviousCommonAbility.started += instance.OnPreviousCommonAbility;
-                @PreviousCommonAbility.performed += instance.OnPreviousCommonAbility;
-                @PreviousCommonAbility.canceled += instance.OnPreviousCommonAbility;
-                @NextCommonAbility.started += instance.OnNextCommonAbility;
-                @NextCommonAbility.performed += instance.OnNextCommonAbility;
-                @NextCommonAbility.canceled += instance.OnNextCommonAbility;
-                @SpecialAbilityToggle.started += instance.OnSpecialAbilityToggle;
-                @SpecialAbilityToggle.performed += instance.OnSpecialAbilityToggle;
-                @SpecialAbilityToggle.canceled += instance.OnSpecialAbilityToggle;
+                @CommonAbility.started += instance.OnCommonAbility;
+                @CommonAbility.performed += instance.OnCommonAbility;
+                @CommonAbility.canceled += instance.OnCommonAbility;
+                @SpecialAbility.started += instance.OnSpecialAbility;
+                @SpecialAbility.performed += instance.OnSpecialAbility;
+                @SpecialAbility.canceled += instance.OnSpecialAbility;
             }
 
             /// <summary>
@@ -1132,15 +1071,12 @@ namespace Game.Input
                 @AimAndShoot.started -= instance.OnAimAndShoot;
                 @AimAndShoot.performed -= instance.OnAimAndShoot;
                 @AimAndShoot.canceled -= instance.OnAimAndShoot;
-                @PreviousCommonAbility.started -= instance.OnPreviousCommonAbility;
-                @PreviousCommonAbility.performed -= instance.OnPreviousCommonAbility;
-                @PreviousCommonAbility.canceled -= instance.OnPreviousCommonAbility;
-                @NextCommonAbility.started -= instance.OnNextCommonAbility;
-                @NextCommonAbility.performed -= instance.OnNextCommonAbility;
-                @NextCommonAbility.canceled -= instance.OnNextCommonAbility;
-                @SpecialAbilityToggle.started -= instance.OnSpecialAbilityToggle;
-                @SpecialAbilityToggle.performed -= instance.OnSpecialAbilityToggle;
-                @SpecialAbilityToggle.canceled -= instance.OnSpecialAbilityToggle;
+                @CommonAbility.started -= instance.OnCommonAbility;
+                @CommonAbility.performed -= instance.OnCommonAbility;
+                @CommonAbility.canceled -= instance.OnCommonAbility;
+                @SpecialAbility.started -= instance.OnSpecialAbility;
+                @SpecialAbility.performed -= instance.OnSpecialAbility;
+                @SpecialAbility.canceled -= instance.OnSpecialAbility;
             }
 
             /// <summary>
@@ -1246,12 +1182,12 @@ namespace Game.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMove(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "AimPosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnAimPosition(InputAction.CallbackContext context);
+            void OnAim(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
@@ -1260,19 +1196,12 @@ namespace Game.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnFire(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "PreviousCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "CommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnPreviousCommonAbility(InputAction.CallbackContext context);
-            /// <summary>
-            /// Method invoked when associated input action "NextCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-            /// </summary>
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnNextCommonAbility(InputAction.CallbackContext context);
+            void OnCommonAbility(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "SpecialAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
@@ -1303,26 +1232,19 @@ namespace Game.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnAimAndShoot(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "PreviousCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "CommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnPreviousCommonAbility(InputAction.CallbackContext context);
+            void OnCommonAbility(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "NextCommonAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "SpecialAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnNextCommonAbility(InputAction.CallbackContext context);
-            /// <summary>
-            /// Method invoked when associated input action "SpecialAbilityToggle" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-            /// </summary>
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnSpecialAbilityToggle(InputAction.CallbackContext context);
+            void OnSpecialAbility(InputAction.CallbackContext context);
         }
     }
 }

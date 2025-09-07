@@ -146,5 +146,20 @@ namespace Game.Gameplay.Weapons
                                                originalBarrelPosition,
                                                Mathf.Sin(Mathf.PI/2.0f * recoilDelta));
         }
+
+        public override WeaponType GetWeaponType()
+        {
+            return WeaponType.Linear;
+        }
+
+        public override void Activate()
+        {
+            
+        }
+
+        public override void Deactivate()
+        {
+            
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Game.Gameplay.AbilityManagement
         [SerializeField]protected bool coolDownHappening = false;
 
         public abstract void OnEquip();
-        public abstract void OnAim(Vector3 aimPosition);
+        public abstract void OnAim(Vector2 aimInput);
         public abstract void Execute();
         public abstract void OnWithHold();
         public bool IsReady()
