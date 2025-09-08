@@ -15,7 +15,8 @@ namespace Game.Gameplay.Weapons
         [SerializeField]private float throwStrength = 0.0f;
         [SerializeField]private Vector3 throwStartPosition = Vector3.zero;
         [SerializeField]private Vector3 throwDirection = Vector3.zero;
-
+        [Min(0.1f)]
+        [SerializeField] private float attackRange = 5.0f;
 
         private float time = 0.0f;
         private Vector3 currentPosition = Vector3.zero;

@@ -7363,17 +7363,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258357311}
   m_Mesh: {fileID: -2421876685864359195, guid: cbc97dbd13a74fd4b9241d805afeed86, type: 3}
---- !u!114 &259639062 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6612952509714808825, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-  m_PrefabInstance: {fileID: 1421065552}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f0a1d42121b1042937a3b580d3d0e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &260133921
 GameObject:
   m_ObjectHideFlags: 0
@@ -31686,17 +31675,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345248514}
   m_Mesh: {fileID: -2421876685864359195, guid: cbc97dbd13a74fd4b9241d805afeed86, type: 3}
---- !u!114 &1354181267 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3235305736250650968, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-  m_PrefabInstance: {fileID: 1421065552}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4389ee4ca3cd5c942a1eeb3eda10cf40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1355697078
 GameObject:
   m_ObjectHideFlags: 0
@@ -33824,98 +33802,6 @@ PrefabInstance:
     - target: {fileID: 250415723747923397, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
       propertyPath: m_Name
       value: Player Car 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1878942835109990128, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 3235305736250650968, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: rotationSpeed.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: machineGun
-      value: 
-      objectReference: {fileID: 259639062}
-    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: managedReferences[8859697714028085320].aimHandler
-      value: 
-      objectReference: {fileID: 1354181267}
-    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: managedReferences[8859697714028085320].maxAimDistance
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: managedReferences[8859697714028085320].collisionLayerMask.m_Bits
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: managedReferences[8859697714028085320].lineWidthCurve.m_Curve.Array.data[0].value
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: managedReferences[8859697714028085320].lineWidthCurve.m_Curve.Array.data[1].value
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: managedReferences[8859697714028085320].lineWidthCurve.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: managedReferences[8859697714028085320].lineWidthCurve.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireStarted.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireReleased.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFirePerformed.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 259639062}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireStarted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 259639062}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireReleased.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 259639062}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireReleased.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 259639062}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFirePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 259639062}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireStarted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MakeBarrelRoll
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireStarted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: StartRecoil
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireReleased.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MakeBarrelUnroll
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFireReleased.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: StopRecoil
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456706413971108733, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
-      propertyPath: OnFirePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
