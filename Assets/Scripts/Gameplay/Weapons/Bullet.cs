@@ -41,11 +41,15 @@ namespace Game.Gameplay.Weapons
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            HealthManager health = other.GetComponent<HealthManager>();
-            if(health != null)
+            if(other.TryGetComponent<HealthManager>(out HealthManager healthManager))
             {
-                health.TakeDamage(damage);
+                healthManager.TakeDamage(damage);
             }
+            else if(other.TryGetComponent<Health>(out Health health))
+            {
+                health.OnHealthDamaged?.Invoke(damage);
+            }
+
             Destroy();
         }
     }

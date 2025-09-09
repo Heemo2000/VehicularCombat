@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3489207701467429508}
   - component: {fileID: -1024410508983690849}
   - component: {fileID: 7561558460400410523}
+  - component: {fileID: 1595735447582511669}
   m_Layer: 0
   m_Name: Projectile Bullet
   m_TagString: Untagged
@@ -103,6 +104,141 @@ MonoBehaviour:
   throwStrength: 0
   throwStartPosition: {x: 0, y: 0, z: 0}
   throwDirection: {x: 0, y: 0, z: 0}
+  attackRange: 5
+  minExplodeVisualVelocity: {x: 1, y: 1, z: 1}
+  maxExplodeVisualVelocity: {x: 5, y: 5, z: 5}
+--- !u!114 &1595735447582511669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6347784266456771336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 0
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 3
+    DissipationRate: 0
+    RawSignal: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
+    AmplitudeGain: 5
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.52759814
+          outSlope: -0.52759814
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.34194195
+          value: 0.81959206
+          inSlope: -2.601407
+          outSlope: -2.601407
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.12391601
+          outWeight: 0.18815264
+        - serializedVersion: 3
+          time: 0.44751894
+          value: 0.56714296
+          inSlope: -3.4051774
+          outSlope: -3.4051774
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.051470887
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: -1.0265383
+          outSlope: -1.0265383
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: -0.52759814
+          outSlope: -0.52759814
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.34194195
+          value: 0.81959206
+          inSlope: -2.601407
+          outSlope: -2.601407
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.12391601
+          outWeight: 0.18815264
+        - serializedVersion: 3
+          time: 0.44751894
+          value: 0.56714296
+          inSlope: -3.4051774
+          outSlope: -3.4051774
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.051470887
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: -1.0265383
+          outSlope: -1.0265383
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0.1
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  IgnoreTag: Untagged
+  UseImpactDirection: 0
+  ScaleImpactWithMass: 0
+  ScaleImpactWithSpeed: 1
 --- !u!1001 &1875072020731210622
 PrefabInstance:
   m_ObjectHideFlags: 0

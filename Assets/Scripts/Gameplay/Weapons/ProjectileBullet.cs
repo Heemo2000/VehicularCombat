@@ -1,7 +1,7 @@
 using UnityEngine;
 using Game.ObjectPoolHandling;
 using Game.Core;
-
+using Unity.Cinemachine;
 namespace Game.Gameplay.Weapons
 { 
     public class ProjectileBullet : Bullet
@@ -17,6 +17,9 @@ namespace Game.Gameplay.Weapons
         [SerializeField]private Vector3 throwDirection = Vector3.zero;
         [Min(0.1f)]
         [SerializeField] private float attackRange = 5.0f;
+        [SerializeField] private Vector3 minExplodeVisualVelocity = Vector3.one;
+        [SerializeField] private Vector3 maxExplodeVisualVelocity = Vector3.one;
+
 
         private float time = 0.0f;
         private Vector3 currentPosition = Vector3.zero;
@@ -26,6 +29,7 @@ namespace Game.Gameplay.Weapons
         private Vector3 startVelocity = Vector3.zero;
         
         private ObjectPool<ProjectileBullet> bulletPool;
+        private CinemachineCollisionImpulseSource impulseSource;
 
         public float Gravity { get => gravity; set => gravity = value; }
         public float Speed { get => speed; set => speed = value; }
@@ -75,9 +79,25 @@ namespace Game.Gameplay.Weapons
             time += speed * Time.fixedDeltaTime;
         }
 
+        protected override void Awake()
+        {
+            impulseSource = GetComponent<CinemachineCollisionImpulseSource>();
+            base.Awake();
+        }
         private void FixedUpdate()
         {
             CalculatePosition();
+        }
+
+        protected override void OnTriggerEnter(Collider other)
+        {
+            Vector3 randomVisualVelocity = Vector3.zero;
+            randomVisualVelocity.x = Random.Range(minExplodeVisualVelocity.x, maxExplodeVisualVelocity.x);
+            randomVisualVelocity.y = Random.Range(minExplodeVisualVelocity.y, maxExplodeVisualVelocity.y);
+            randomVisualVelocity.z = Random.Range(minExplodeVisualVelocity.z, maxExplodeVisualVelocity.z);
+            
+            impulseSource.GenerateImpulseAt(other.transform.position, randomVisualVelocity);
+            base.OnTriggerEnter(other);
         }
     }
 }

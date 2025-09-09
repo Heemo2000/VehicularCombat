@@ -15,6 +15,7 @@ namespace Game.Gameplay.AbilityManagement
         public LineRenderer lineRenderer;
         public AnimationCurve lineWidthCurve;
         public LayerMask collisionLayerMask;
+        public ProjectileIndicator indicator;
         
         [Range(10, 500)]
         public int linePoints = 25;
@@ -41,6 +42,7 @@ namespace Game.Gameplay.AbilityManagement
             aimHandler.AllowXRotation = true;
             lineRenderer.widthCurve = lineWidthCurve;
             weaponManager.Activate(projectileGun);
+            indicator.Activate();
         }
 
         public override void OnWithHold()
@@ -50,6 +52,7 @@ namespace Game.Gameplay.AbilityManagement
             originalWeaponMesh.SetActive(true);
             targetWeaponMesh.SetActive(false);
             weaponManager.Activate(WeaponType.Linear);
+            indicator.Deactivate();
         }
 
         private void DrawProjection()
@@ -76,6 +79,7 @@ namespace Game.Gameplay.AbilityManagement
                     collisionLayerMask))
                 {
                     lineRenderer.SetPosition(i, hit.point);
+                    indicator.transform.position = hit.point;
                     lineRenderer.positionCount = i + 1;
                     return;
                 }

@@ -571,6 +571,7 @@ MonoBehaviour:
         collisionLayerMask:
           serializedVersion: 2
           m_Bits: 256
+        indicator: {fileID: 0}
         linePoints: 150
         timeBetweenPoints: 0.1
     - rid: 8859697714028085320
@@ -2866,6 +2867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5586792937721189164}
   - component: {fileID: 5826453842810751911}
+  - component: {fileID: 65169526873572370}
   m_Layer: 3
   m_Name: Projectile Gun
   m_TagString: Untagged
@@ -2907,6 +2909,59 @@ MonoBehaviour:
   firePoint: {fileID: 8742060899521953428}
   bulletPrefab: {fileID: 7561558460400410523, guid: bbd6e791c1dc7b04db715fd5b86b5182, type: 3}
   initialBulletCount: 100
+--- !u!114 &65169526873572370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491948712845589289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 2
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &5535491000412443505
 GameObject:
   m_ObjectHideFlags: 0
@@ -3211,6 +3266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4821272429963610527}
   - component: {fileID: 6612952509714808825}
+  - component: {fileID: 6420875268030571320}
   m_Layer: 3
   m_Name: Machine Gun
   m_TagString: Untagged
@@ -3260,7 +3316,72 @@ MonoBehaviour:
   barrelRecoilDistance: 0.2
   OnFireDone:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6420875268030571320}
+        m_TargetAssemblyTypeName: Unity.Cinemachine.CinemachineImpulseSource, Unity.Cinemachine
+        m_MethodName: GenerateImpulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6420875268030571320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968297657530507597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 1
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 1
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: 0, z: -2.5}
 --- !u!1 &7515726916342667697
 GameObject:
   m_ObjectHideFlags: 0
@@ -4371,7 +4492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7112607029038248085, guid: 62a91b35790588844844d30b56987758, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.12
+      value: 4.63
       objectReference: {fileID: 0}
     - target: {fileID: 7112607029038248085, guid: 62a91b35790588844844d30b56987758, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
