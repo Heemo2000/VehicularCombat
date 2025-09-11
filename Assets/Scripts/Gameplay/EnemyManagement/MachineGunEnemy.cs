@@ -100,6 +100,17 @@ namespace Game.Gameplay.EnemyManagement
         {
             vehicle.ApplyInstantBrakes();
         }
+
+        private void DestroyVehicle()
+        {
+            if(ServiceLocator.ForSceneOf(this).TryGetService<ParticlesGenerator>(out var generator))
+            {
+                generator.Spawn(ParticlesType.Explosion, transform.position, Quaternion.identity);
+            }
+
+            gameObject.SetActive(false);
+        }
+
         private void Awake()
         {
             vehicle = GetComponent<Vehicle>();
@@ -195,6 +206,7 @@ namespace Game.Gameplay.EnemyManagement
         void Start()
         {
             stateMachine.SetState(patrolState);
+            health.OnDeath.AddListener(DestroyVehicle);
         }
 
         // Update is called once per frame
@@ -212,6 +224,11 @@ namespace Game.Gameplay.EnemyManagement
         private void LateUpdate()
         {
             stateMachine.OnLateUpdate();
+        }
+
+        private void OnDisable()
+        {
+            health.OnDeath.RemoveListener(DestroyVehicle);
         }
 
         private void OnDrawGizmosSelected()

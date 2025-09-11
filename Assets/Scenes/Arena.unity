@@ -9215,13 +9215,13 @@ MonoBehaviour:
     - {fileID: -6666569030115328132, guid: 9b1ade228372ec4488e1a5b827c5a325, type: 3}
     - {fileID: -2616076083807194391, guid: 73e1efc6f41287c468be58bca86b9c95, type: 3}
     - {fileID: -9063204542972257537, guid: 1823e4cc1b45adc4297e037743e371ea, type: 3}
-    count: 20
+    count: 50
   - type: 1
     particles:
     - {fileID: 6757861807571784762, guid: 8e71c7d1f786bf34ea0c11ebf629cd43, type: 3}
     - {fileID: 3604969327691623452, guid: 395cb71226fa2bf43a6dfe8ec48aa729, type: 3}
     - {fileID: -2371269621697034837, guid: 82a8910e0e01ddd429f319de31dea9de, type: 3}
-    count: 30
+    count: 70
 --- !u!4 &336932194
 Transform:
   m_ObjectHideFlags: 0
@@ -34707,6 +34707,14 @@ PrefabInstance:
       propertyPath: managedReferences[8859697714028085319].indicator
       value: 
       objectReference: {fileID: 2072944513}
+    - target: {fileID: 5826453842810751911, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
+      propertyPath: gravity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5826453842810751911, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
+      propertyPath: throwStrength
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8318898152422070902, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
       propertyPath: rotationSpeed.x
       value: 1

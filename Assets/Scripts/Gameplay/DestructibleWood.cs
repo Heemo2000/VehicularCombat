@@ -9,7 +9,10 @@ namespace Game.Gameplay
 
         private void ShowParticleEffect()
         {
-
+            if(ServiceLocator.ForSceneOf(this).TryGetService<ParticlesGenerator>(out var generator))
+            {
+                generator.Spawn(ParticlesType.Explosion, transform.position, Quaternion.identity);
+            }
         }
 
         private void Destroy()
