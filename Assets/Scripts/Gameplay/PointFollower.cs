@@ -46,7 +46,7 @@ namespace Game.Gameplay
             //if yes, then move forward.
             else if (IsBlockingBackward())
             {
-                Debug.Log("Blocking backward, now accelerating");
+                //Debug.Log("Blocking backward, now accelerating");
                 moveInput.y = 1.0f;
             }
             //Else if, check if our car's speed is greater than or equal to a specific amount

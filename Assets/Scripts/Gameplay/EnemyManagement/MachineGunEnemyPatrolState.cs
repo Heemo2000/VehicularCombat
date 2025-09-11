@@ -86,7 +86,7 @@ namespace Game.Gameplay.EnemyManagement
 
                 while (!NavMesh.SamplePosition(randomPatrolPosition, out hit, 1.0f, 1 << Constants.NAVMESH_WALKABLE))
                 {
-                    Debug.Log("Finding random patrol position");
+                    //Debug.Log("Finding random patrol position");
                     random2D = Random.insideUnitCircle;
                     randomPatrolPosition = this.enemy.transform.position +
                                                new Vector3(random2D.x, 0.0f, random2D.y) *
