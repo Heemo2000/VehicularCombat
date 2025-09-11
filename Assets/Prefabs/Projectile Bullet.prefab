@@ -105,8 +105,8 @@ MonoBehaviour:
   throwStartPosition: {x: 0, y: 0, z: 0}
   throwDirection: {x: 0, y: 0, z: 0}
   attackRange: 5
-  minExplodeVisualVelocity: {x: 1, y: 1, z: 1}
-  maxExplodeVisualVelocity: {x: 5, y: 5, z: 5}
+  minExplodeVisualVelocity: {x: 0, y: 0.5, z: 0}
+  maxExplodeVisualVelocity: {x: 0.1, y: 1, z: 0.1}
 --- !u!114 &1595735447582511669
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Game.Core;
 using UnityEngine;
 
 namespace Game.Gameplay
@@ -14,6 +15,10 @@ namespace Game.Gameplay
         private void Destroy()
         {
             Destroy(gameObject);
+            if(ServiceLocator.ForSceneOf(this).TryGetService<NavmeshSurfaceModifier>(out var surfaceModifier))
+            {
+                surfaceModifier.Bake();
+            }
         }
 
         private void Awake()

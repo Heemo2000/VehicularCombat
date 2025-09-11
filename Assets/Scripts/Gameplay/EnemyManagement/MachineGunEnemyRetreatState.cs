@@ -19,6 +19,7 @@ namespace Game.Gameplay.EnemyManagement
         public MachineGunEnemyRetreatState(MachineGunEnemy enemy)
         {
             this.enemy = enemy;
+            path = new NavMeshPath();
         }
 
         public bool IsCooldownCompleted()

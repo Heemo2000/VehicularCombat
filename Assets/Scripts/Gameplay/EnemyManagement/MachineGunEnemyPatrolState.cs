@@ -12,13 +12,13 @@ namespace Game.Gameplay.EnemyManagement
         private float currentTime = 0.0f;
         private NavMeshPath path = null;
         private Coroutine patrolCoroutine = null;
-        private GameObject destinationGO = null;
+        //private GameObject destinationGO = null;
 
         public MachineGunEnemyPatrolState(MachineGunEnemy enemy)
         {
             this.enemy = enemy;
-            this.destinationGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            this.destinationGO.GetComponent<Collider>().enabled = false;
+            //this.destinationGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            //this.destinationGO.GetComponent<Collider>().enabled = false;
             path = new NavMeshPath();
         }
 
@@ -26,7 +26,7 @@ namespace Game.Gameplay.EnemyManagement
         {
             this.enemy.SetSpeed(this.enemy.PatrolSpeed);
             patrolCoroutine = this.enemy.StartCoroutine(Patrol());
-            this.destinationGO.SetActive(true);
+            //this.destinationGO.SetActive(true);
             Random.InitState((int)System.DateTime.Now.Ticks);
         }
 
@@ -50,7 +50,7 @@ namespace Game.Gameplay.EnemyManagement
         {
             this.enemy.StopCoroutine(patrolCoroutine);
             patrolCoroutine = null;
-            this.destinationGO.SetActive(false);
+            //this.destinationGO.SetActive(false);
         }
 
         private IEnumerator Patrol()
@@ -97,7 +97,7 @@ namespace Game.Gameplay.EnemyManagement
                 }
 
                 //randomPatrolPosition = hit.position;
-                this.destinationGO.transform.position = randomPatrolPosition;
+                //this.destinationGO.transform.position = randomPatrolPosition;
 
                 //Debug.Log("Calculating path");
                 NavMesh.CalculatePath(this.enemy.transform.position, randomPatrolPosition, NavMesh.AllAreas, path);

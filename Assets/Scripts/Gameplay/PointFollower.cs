@@ -39,7 +39,7 @@ namespace Game.Gameplay
             //if yes, then move backward.
             if (IsBlockingForward())
             {
-                Debug.Log("Blocking forward, now reversing");
+                //Debug.Log("Blocking forward, now reversing");
                 moveInput.y = -1.0f;
             }
             //Else if, Check if it's there's anything blocking in backward direction,
@@ -62,7 +62,7 @@ namespace Game.Gameplay
             //dot product between our car's forward direction and move direction
             else
             {
-                Debug.Log("Now moving");
+                //Debug.Log("Now moving");
                 float dot = Vector3.Dot(transform.forward, moveDirection);
                 moveInput.y = (dot >= 0.0f && dot <= 0.5f) ? 1.0f - dot : dot;
             }
@@ -91,7 +91,7 @@ namespace Game.Gameplay
                     steerInput = -steerInput;
                 }
 
-                Debug.Log("Avoid obstacle input: " + avoidObstacleInput);
+                //Debug.Log("Avoid obstacle input: " + avoidObstacleInput);
                 moveInput.x = Mathf.Clamp(steerInput + avoidObstacleInput, -1.0f, 1.0f);
             }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Game.ObjectPoolHandling;
+using Game.Core;
 namespace Game.Gameplay.Weapons
 {
     public abstract class Bullet : MonoBehaviour
@@ -50,6 +51,10 @@ namespace Game.Gameplay.Weapons
                 health.OnHealthDamaged?.Invoke(damage);
             }
 
+            if(ServiceLocator.ForSceneOf(this).TryGetService<ParticlesGenerator>(out var generator))
+            {
+                generator.Spawn(ParticlesType.Hit, transform.position, Quaternion.identity);
+            }
             Destroy();
         }
     }

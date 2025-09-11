@@ -97,6 +97,10 @@ namespace Game.Gameplay.Weapons
             randomVisualVelocity.z = Random.Range(minExplodeVisualVelocity.z, maxExplodeVisualVelocity.z);
             
             impulseSource.GenerateImpulseAt(other.transform.position, randomVisualVelocity);
+            if (ServiceLocator.ForSceneOf(this).TryGetService<ParticlesGenerator>(out var generator))
+            {
+                generator.Spawn(ParticlesType.Explosion, transform.position, Quaternion.identity);
+            }
             base.OnTriggerEnter(other);
         }
     }

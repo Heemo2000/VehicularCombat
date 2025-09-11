@@ -27,7 +27,10 @@ namespace Game.Gameplay
             currentYAngle += yInput * rotationSpeed.y;
             
             transform.localRotation = Quaternion.Euler(0.0f, currentYAngle, 0.0f);
-            xAxisRotator.localRotation = Quaternion.Euler(currentXAngle, 0.0f, 0.0f);
+            if(xAxisRotator != null)
+            {
+                xAxisRotator.localRotation = Quaternion.Euler(currentXAngle, 0.0f, 0.0f);
+            }
         }
     }
 }
