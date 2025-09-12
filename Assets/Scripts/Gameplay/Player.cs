@@ -1,3 +1,4 @@
+using Game.Core;
 using UnityEngine;
 
 namespace Game.Gameplay
@@ -7,15 +8,29 @@ namespace Game.Gameplay
         
         [SerializeField] private AimHandler aimHandler;
         [SerializeField] private Weapons.Weapon weapon;
+        [SerializeField] private Health mainHealth;
         private Vehicle vehicle;
         private GameInput input;
         private Vector2 moveInput;
         private Vector2 aimPosition;
 
+        private void ShowDeathVisual()
+        {
+            if (ServiceLocator.ForSceneOf(vehicle).TryGetService<ParticlesGenerator>(out var generator))
+            {
+                generator.Spawn(ParticlesType.Explosion, vehicle.transform.position, Quaternion.identity);
+            }
+        }
+
         private void Awake()
         {
             vehicle = GetComponent<Vehicle>();
             input = GetComponent<GameInput>();
+        }
+
+        private void Start()
+        {
+            mainHealth.OnDeath.AddListener(ShowDeathVisual);
         }
 
         // Update is called once per frame
@@ -46,6 +61,11 @@ namespace Game.Gameplay
             {
                 aimHandler.YInput = input.GetRotateInput().x;
             }
+        }
+
+        private void OnDestroy()
+        {
+            mainHealth.OnDeath.RemoveListener(ShowDeathVisual);
         }
     }
 }

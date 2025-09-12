@@ -2,6 +2,7 @@ using UnityEngine;
 using Game.ObjectPoolHandling;
 using Game.Core;
 using Unity.Cinemachine;
+using log4net.Appender;
 namespace Game.Gameplay.Weapons
 { 
     public class ProjectileBullet : Bullet
@@ -19,7 +20,7 @@ namespace Game.Gameplay.Weapons
         [SerializeField] private float attackRange = 5.0f;
         [SerializeField] private Vector3 minExplodeVisualVelocity = Vector3.one;
         [SerializeField] private Vector3 maxExplodeVisualVelocity = Vector3.one;
-
+        [SerializeField] private LayerMask damageLayerMask;
 
         private float time = 0.0f;
         private Vector3 currentPosition = Vector3.zero;
@@ -30,7 +31,7 @@ namespace Game.Gameplay.Weapons
         
         private ObjectPool<ProjectileBullet> bulletPool;
         private CinemachineCollisionImpulseSource impulseSource;
-
+        private Collider[] detected;
         public float Gravity { get => gravity; set => gravity = value; }
         public float Speed { get => speed; set => speed = value; }
         public float Mass { get => mass; set => mass = value; }
@@ -62,6 +63,10 @@ namespace Game.Gameplay.Weapons
             base.Start();
             SetTimeToZero();
             CalculateStartVelocity();
+            if(detected == null)
+            {
+                detected = new Collider[Constants.MAX_COLLIDER_COUNT];
+            }
         }
         private void CalculatePosition()
         {
@@ -101,7 +106,24 @@ namespace Game.Gameplay.Weapons
             {
                 generator.Spawn(ParticlesType.Explosion, transform.position, Quaternion.identity);
             }
+
+            int count = Physics.OverlapSphereNonAlloc(transform.position, attackRange, detected, damageLayerMask.value);
+            for (int i = 0; i < count; i++)
+            {
+
+                if (detected[i].TryGetComponent<Health>(out var health))
+                {
+                    Debug.Log(health.transform.name);
+                    health.OnHealthDamaged?.Invoke(base.damage);
+                }
+            }
             base.OnTriggerEnter(other);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, attackRange);
         }
     }
 }

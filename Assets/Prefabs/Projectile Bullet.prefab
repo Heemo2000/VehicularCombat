@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 5
-  damage: 10
+  damage: 150
   gravity: 10
   speed: 0.01
   mass: 1
@@ -107,6 +107,9 @@ MonoBehaviour:
   attackRange: 5
   minExplodeVisualVelocity: {x: 0, y: 0.5, z: 0}
   maxExplodeVisualVelocity: {x: 0.1, y: 1, z: 0.1}
+  damageLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &1595735447582511669
 MonoBehaviour:
   m_ObjectHideFlags: 0
