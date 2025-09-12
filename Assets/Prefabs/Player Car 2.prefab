@@ -642,6 +642,12 @@ MonoBehaviour:
         maxAimDistance: 15
         carSpeed: 300
         requiredTorque: 30000
+        damage: 150
+        damageRadius: 10
+        throwForce: 300
+        damageLayerMask:
+          serializedVersion: 2
+          m_Bits: 8
 --- !u!114 &5760721643501428376
 MonoBehaviour:
   m_ObjectHideFlags: 0

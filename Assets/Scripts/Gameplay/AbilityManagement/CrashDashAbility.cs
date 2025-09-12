@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using Game.Core;
 
 namespace Game.Gameplay.AbilityManagement
 {
@@ -25,13 +26,21 @@ namespace Game.Gameplay.AbilityManagement
         public float carSpeed = 30.0f;
         [Min(10000.0f)]
         public float requiredTorque = 30000.0f;
+        [Min(0.1f)]
+        public float damage = 300.0f;
+        [Min(0.1f)]
+        public float damageRadius = 10.0f;
+        [Min(1.0f)]
+        public float throwForce = 300.0f;
+        public LayerMask damageLayerMask;
 
         private float currentYRotation = 0.0f;
         private Vector3 endingPoint = Vector3.zero;
         private RaycastHit hit;
         private Rigidbody vehicleRB;
         private bool collisionHappened = false;
-        private bool addedCollisionListener = false;
+        private bool firstTimeSetup = false;
+        private Collider[] detected;
 
         private Coroutine dashCoroutine;
 
@@ -81,12 +90,14 @@ namespace Game.Gameplay.AbilityManagement
             vehicleRB.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             vehicle.enabled = false;
 
-            if(!addedCollisionListener)
+            if(!firstTimeSetup)
             {
-                trigger.OnCollision += MakeCollisionHappenedTrue;
-                addedCollisionListener = true;
+                detected = new Collider[Constants.MAX_COLLIDER_COUNT];
+                firstTimeSetup = true;
             }
-            
+            trigger.OnCollision += MakeCollisionHappenedTrue;
+            trigger.OnCollision += ThrowOtherCarsAndDamageThem;
+            trigger.OnCollision += ShowVisual;
         }
 
         public override void OnWithHold()
@@ -96,6 +107,7 @@ namespace Game.Gameplay.AbilityManagement
             vehicleRB.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             vehicle.enabled = true;
             aimHandler.enabled = true;
+            collisionHappened = false;
             
             //trigger.OnCollision -= MakeCollisionHappenedTrue;
         }
@@ -103,6 +115,35 @@ namespace Game.Gameplay.AbilityManagement
         private void MakeCollisionHappenedTrue()
         {
             collisionHappened = true;
+        }
+
+        private void ThrowOtherCarsAndDamageThem()
+        {
+            int count = Physics.OverlapSphereNonAlloc(vehicle.transform.position, damageRadius, detected, damageLayerMask.value);
+            Debug.Log("Detected count: " + count);
+            for (int i = 0; i < count; i++)
+            {
+                Vector3 current = detected[i].transform.position;
+                Health health = detected[i].GetComponent<Health>();
+                
+                if (health != null)
+                {
+                    health.OnHealthDamaged?.Invoke(damage);
+                    Vector3 direction = (current - vehicle.transform.position).normalized;
+                    if(health.TryGetComponent<Rigidbody>(out var rb))
+                    {
+                        rb.AddForce(direction * throwForce, ForceMode.Impulse);
+                    }
+                }
+            }
+        }
+        
+        private void ShowVisual()
+        {
+            if (ServiceLocator.ForSceneOf(vehicle).TryGetService<ParticlesGenerator>(out var generator))
+            {
+                generator.Spawn(ParticlesType.Explosion, vehicle.transform.position, Quaternion.identity);
+            }
         }
 
         private IEnumerator Dash()
@@ -121,7 +162,7 @@ namespace Game.Gameplay.AbilityManagement
             vehicle.Input = new Vector2(0.0f, 1.0f);
             collisionHappened = false;
 
-            while(collisionHappened == false)
+            while(vehicle.enabled && collisionHappened == false)
             {
                 vehicle.Input = new Vector2(0.0f, 1.0f);
                 yield return null;
@@ -133,6 +174,10 @@ namespace Game.Gameplay.AbilityManagement
             vehicle.ForwardSpeed = defaultSpeed;
             vehicle.ForwardTorque = defaultTorque;
 
+            
+            trigger.OnCollision -= MakeCollisionHappenedTrue;
+            trigger.OnCollision -= ThrowOtherCarsAndDamageThem;
+            trigger.OnCollision -= ShowVisual;
             dashCoroutine = null;
         }
     }

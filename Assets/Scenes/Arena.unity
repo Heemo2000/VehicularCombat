@@ -11339,7 +11339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7940896024926748810, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
       propertyPath: detectGroundLayerMask.m_Bits
-      value: 257
+      value: 321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979537481451948895, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
+      propertyPath: maxHealth
+      value: 450
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20162,7 +20166,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7940896024926748810, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
       propertyPath: detectGroundLayerMask.m_Bits
-      value: 257
+      value: 321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979537481451948895, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
+      propertyPath: maxHealth
+      value: 450
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20733,7 +20741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7940896024926748810, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
       propertyPath: detectGroundLayerMask.m_Bits
-      value: 257
+      value: 321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979537481451948895, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
+      propertyPath: maxHealth
+      value: 450
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26338,7 +26350,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7940896024926748810, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
       propertyPath: detectGroundLayerMask.m_Bits
-      value: 257
+      value: 321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979537481451948895, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
+      propertyPath: maxHealth
+      value: 450
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34704,9 +34720,17 @@ PrefabInstance:
       value: Player Car 2
       objectReference: {fileID: 0}
     - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
+      propertyPath: managedReferences[8859697714028085320].damage
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
       propertyPath: managedReferences[8859697714028085319].indicator
       value: 
       objectReference: {fileID: 2072944513}
+    - target: {fileID: 5325496829814161228, guid: fd3664bd10e83424db34fd50573c307c, type: 3}
+      propertyPath: managedReferences[8859697714028085320].damageLayerMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -42368,7 +42392,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7940896024926748810, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
       propertyPath: detectGroundLayerMask.m_Bits
-      value: 257
+      value: 321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979537481451948895, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
+      propertyPath: maxHealth
+      value: 450
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -44438,7 +44466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7619794995365385921, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.4800005
+      value: 6.1
       objectReference: {fileID: 0}
     - target: {fileID: 7619794995365385921, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -44474,7 +44502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7940896024926748810, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
       propertyPath: detectGroundLayerMask.m_Bits
-      value: 257
+      value: 321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979537481451948895, guid: bf35575bd34ecfc4bbf665ed3199b683, type: 3}
+      propertyPath: maxHealth
+      value: 450
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

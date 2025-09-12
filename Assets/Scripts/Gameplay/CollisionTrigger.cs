@@ -8,7 +8,7 @@ namespace Game.Gameplay
         public Action OnCollision;        
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("Collided with " + collision.gameObject.name);
+            //Debug.Log("Collided with " + collision.gameObject.name);
             OnCollision?.Invoke();
         }
     }
