@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 116421142429653819}
   - component: {fileID: 5211961854269778819}
+  - component: {fileID: 358546096024585904}
   - component: {fileID: 6282880379382258484}
   - component: {fileID: 6285994826591588714}
   - component: {fileID: 2859867450743567858}
@@ -82,6 +83,7 @@ GameObject:
   - component: {fileID: 5325496829814161228}
   - component: {fileID: 5760721643501428376}
   - component: {fileID: 3578975296880308384}
+  - component: {fileID: 8081977951074667978}
   m_Layer: 3
   m_Name: Player Car 2
   m_TagString: Untagged
@@ -134,6 +136,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.4402683, z: 5}
   m_Center: {x: 0, y: 0.72013414, z: 0}
+--- !u!65 &358546096024585904
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250415723747923397}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2674322, y: 1, z: 2.6225607}
+  m_Center: {x: -0.13371713, y: 1.98, z: -0.91320777}
 --- !u!54 &6282880379382258484
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -544,6 +567,7 @@ MonoBehaviour:
         projectileGun: {fileID: 5826453842810751911}
         weaponManager: {fileID: 5915149042269848739}
         aimHandler: {fileID: 8318898152422070902}
+        material: {fileID: 2100000, guid: 1501697f46e15c044a4eed835af2bcde, type: 2}
         lineRenderer: {fileID: 2906385787288981135}
         lineWidthCurve:
           serializedVersion: 2
@@ -580,6 +604,7 @@ MonoBehaviour:
       data:
         coolDownTime: 8
         coolDownHappening: 0
+        material: {fileID: 2100000, guid: d02ac47d23c758c499fbc64aa8c7507a, type: 2}
         lineRenderer: {fileID: 2906385787288981135}
         lineWidthCurve:
           serializedVersion: 2
@@ -611,9 +636,12 @@ MonoBehaviour:
           serializedVersion: 2
           m_Bits: 72
         aimingPoint: {fileID: 1878942835109990128}
+        player: {fileID: 2859867450743567858}
+        trigger: {fileID: 8081977951074667978}
         aimingSpeed: 10
         maxAimDistance: 15
-        carSpeed: 30
+        carSpeed: 300
+        requiredTorque: 30000
 --- !u!114 &5760721643501428376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +676,18 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &8081977951074667978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250415723747923397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e758d52e76b0e429a3c8de14eaf4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &618223048141425900
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4389ee4ca3cd5c942a1eeb3eda10cf40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: {x: 10, y: 10}
+  allowLookAtPosition: 0
+  rotationSpeed: {x: 1, y: 2.5}
   allowXRotation: 1
   xAxisRotator: {fileID: 8605579645168622488}
   minAngle: -90
@@ -2788,6 +2829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4389ee4ca3cd5c942a1eeb3eda10cf40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowLookAtPosition: 0
   rotationSpeed: {x: 1, y: 2.5}
   allowXRotation: 0
   xAxisRotator: {fileID: 5284378706857076180}
@@ -3590,7 +3632,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d02ac47d23c758c499fbc64aa8c7507a, type: 2}
+  - {fileID: 2100000, guid: 1501697f46e15c044a4eed835af2bcde, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

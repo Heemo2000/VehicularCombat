@@ -12,6 +12,7 @@ namespace Game.Gameplay.AbilityManagement
         public ProjectileGun projectileGun;
         public WeaponManager weaponManager;
         public AimHandler aimHandler;
+        public Material material;
         public LineRenderer lineRenderer;
         public AnimationCurve lineWidthCurve;
         public LayerMask collisionLayerMask;
@@ -40,6 +41,7 @@ namespace Game.Gameplay.AbilityManagement
             targetWeaponMesh.SetActive(true);
             lineRenderer.enabled = true;
             aimHandler.AllowXRotation = true;
+            lineRenderer.material = material;
             lineRenderer.widthCurve = lineWidthCurve;
             weaponManager.Activate(projectileGun);
             indicator.Activate();

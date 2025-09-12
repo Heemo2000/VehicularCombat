@@ -118,6 +118,7 @@ namespace Game.Gameplay
         public float ForwardSpeed { get => forwardSpeed; set => forwardSpeed = value; }
         public float ReverseSpeed { get => reverseSpeed; set => reverseSpeed = value; }
         public bool BrakesApplied { get => brakesApplied; set => brakesApplied = value; }
+        public float ForwardTorque { get => forwardTorque; set => forwardTorque = value; }
 
         public void ApplyInstantBrakes()
         {
