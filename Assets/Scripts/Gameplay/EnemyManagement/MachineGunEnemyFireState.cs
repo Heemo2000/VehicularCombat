@@ -17,7 +17,7 @@ namespace Game.Gameplay.EnemyManagement
 
         public void OnEnter()
         {
-            this.enemy.ApplyBrakes();
+            this.enemy.ApplyInstantBrakes();
             this.aimHandler.AllowLookAtPosition = true;
         }
 

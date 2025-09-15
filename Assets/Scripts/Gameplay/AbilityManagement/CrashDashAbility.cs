@@ -120,13 +120,12 @@ namespace Game.Gameplay.AbilityManagement
         private void ThrowOtherCarsAndDamageThem()
         {
             int count = Physics.OverlapSphereNonAlloc(vehicle.transform.position, damageRadius, detected, damageLayerMask.value);
-            Debug.Log("Detected count: " + count);
+            //Debug.Log("Detected count: " + count);
             for (int i = 0; i < count; i++)
             {
                 Vector3 current = detected[i].transform.position;
-                Health health = detected[i].GetComponent<Health>();
                 
-                if (health != null)
+                if (detected[i].TryGetComponent<Health>(out var health))
                 {
                     health.OnHealthDamaged?.Invoke(damage);
                     Vector3 direction = (current - vehicle.transform.position).normalized;

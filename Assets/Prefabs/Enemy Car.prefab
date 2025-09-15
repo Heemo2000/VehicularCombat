@@ -524,7 +524,7 @@ Transform:
   m_GameObject: {fileID: 2732750037916820649}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13194805, y: 2.6613002, z: 2.6274521}
+  m_LocalPosition: {x: 0.13194805, y: 2.6613002, z: 3.207}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -984,7 +984,7 @@ MonoBehaviour:
   fireInterval: 3
   firePoints:
   - {fileID: 4021097633775557828}
-  bulletPrefab: {fileID: 1713684178822273422, guid: 8f7387a910605b441afb214f04b17bd7, type: 3}
+  bulletPrefab: {fileID: 1713684178822273422, guid: f88d36cdec45c5c4e9bca56e27b9c31a, type: 3}
   initialBulletsCount: 100
   barrel: {fileID: 0}
   maxBarrelRotationSpeed: 10
@@ -1657,7 +1657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: c5946a66b3eec2d479e20b7315b06bf8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.232
+      value: 0.883
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: c5946a66b3eec2d479e20b7315b06bf8, type: 3}
       propertyPath: m_LocalRotation.w

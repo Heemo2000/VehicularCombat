@@ -459,7 +459,7 @@ MonoBehaviour:
   forwardSpeed: 40
   reverseSpeed: 50
   brakingTorque: 4000
-  turnRadius: 3
+  turnRadius: 5
   antiRollbarEnabled: 0
   stiffness: 100
   rollAngle: 1
@@ -479,6 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimHandler: {fileID: 3235305736250650968}
   weapon: {fileID: 6612952509714808825}
+  mainHealth: {fileID: 5335206039787361156}
 --- !u!114 &7456706413971108733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +499,19 @@ MonoBehaviour:
       m_Calls: []
   OnMobileInitialize:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.BaseUI.UIManager, Game.BaseUI
+        m_MethodName: PushPage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: Game.BaseUI.Page, Game.BaseUI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnFireStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -4670,6 +4683,34 @@ PrefabInstance:
     - target: {fileID: 7112607029038248085, guid: 62a91b35790588844844d30b56987758, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7783785500505653977, guid: 62a91b35790588844844d30b56987758, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7783785500505653977, guid: 62a91b35790588844844d30b56987758, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7783785500505653977, guid: 62a91b35790588844844d30b56987758, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 250415723747923397}
+    - target: {fileID: 7783785500505653977, guid: 62a91b35790588844844d30b56987758, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7783785500505653977, guid: 62a91b35790588844844d30b56987758, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7783785500505653977, guid: 62a91b35790588844844d30b56987758, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7783785500505653977, guid: 62a91b35790588844844d30b56987758, type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
