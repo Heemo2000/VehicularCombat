@@ -2,7 +2,6 @@ using UnityEngine;
 using Game.ObjectPoolHandling;
 using Game.Core;
 using Unity.Cinemachine;
-using log4net.Appender;
 namespace Game.Gameplay.Weapons
 { 
     public class ProjectileBullet : Bullet
