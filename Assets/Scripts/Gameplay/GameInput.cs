@@ -9,7 +9,6 @@ namespace Game.Gameplay
 {
     public class GameInput : MonoBehaviour
     {
-        [SerializeField] private RectTransform joystickOuter;
         [SerializeField] private bool simulateAndroid = false;
         private GameControls controls;
         private bool brakeApplied = false;
